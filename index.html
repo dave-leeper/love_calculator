@@ -3,7 +3,7 @@
 <head>
 <title>Love Calculator</title>
 <script>
-    function calculate_love_number(number){
+    function convert_int_to_love_number(number){
         let flag = 0x1
         let intNumber = Math.round(number)
         let isNegative = (0 > intNumber)
@@ -19,28 +19,28 @@
         return loveNumber
     }
     function test_love_number(number1, number2, number3, number4, number5, number6){
-        let loveNumber = calculate_love_number(number1)
+        let loveNumber = convert_int_to_love_number(number1)
         let loveNumberElement = document.getElementById("LoveNumber1")
         loveNumberElement.innerText = loveNumber
-        loveNumber = calculate_love_number(number2)
+        loveNumber = convert_int_to_love_number(number2)
         loveNumberElement = document.getElementById("LoveNumber2")
         loveNumberElement.innerText = loveNumber
-        loveNumber = calculate_love_number(number3)
+        loveNumber = convert_int_to_love_number(number3)
         loveNumberElement = document.getElementById("LoveNumber3")
         loveNumberElement.innerText = loveNumber
-        loveNumber = calculate_love_number(number4)
+        loveNumber = convert_int_to_love_number(number4)
         loveNumberElement = document.getElementById("LoveNumber4")
         loveNumberElement.innerText = loveNumber
-        loveNumber = calculate_love_number(number5)
+        loveNumber = convert_int_to_love_number(number5)
         loveNumberElement = document.getElementById("LoveNumber5")
         loveNumberElement.innerText = loveNumber
-        loveNumber = calculate_love_number(number6)
+        loveNumber = convert_int_to_love_number(number6)
         loveNumberElement = document.getElementById("LoveNumber6")
         loveNumberElement.innerText = loveNumber
     }
 </script>
 </head>
-<body onLoad="test_love_number(1, 2, 3, 4, 5, 6);">
+<body onLoad="test_love_number(-1, -2, -3, -4, -5, -6);">
     <div id="LoveNumber1"></div>
     <div id="LoveNumber2"></div>
     <div id="LoveNumber3"></div>
