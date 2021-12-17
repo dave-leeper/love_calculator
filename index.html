@@ -21,7 +21,6 @@
         let intNumber = Math.round(number)
 
         loveNumber.negative = (0 > intNumber)
-        loveNumber.flags = ""
         intNumber = Math.abs(intNumber)
         for (let loop = 1; loop < 32; loop++) {
             if ((intNumber & flag ) !== 0) { 
