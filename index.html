@@ -5,11 +5,12 @@
 <script>
     function calculate_love_number(number){
         let flag = 0x1
-        let int_number = Math.round(number)
-        let loveNumber = ((0 > int_number)? "-" : "" )
+        let intNumber = Math.round(number)
+        let loveNumber = ((0 > intNumber)? "-" : "" )
 
+        intNumber = Math.abs(intNumber)
         for (let loop = 1; loop < 32; loop++) {
-            if ((int_number & flag ) !== 0) { loveNumber = "1" + loveNumber }
+            if ((intNumber & flag ) !== 0) { loveNumber = "1" + loveNumber }
             else { loveNumber = "0" + loveNumber }
             flag *= 2
         }
