@@ -6,22 +6,39 @@
     function calculate_love_number(number){
         let flag = 0x1
         let int_number = Math.round(number)
-        let loveNumber = ""
+        let loveNumber = ((0 > int_number)? "-" : "" )
 
         for (let loop = 1; loop < 32; loop++) {
             if ((int_number & flag ) !== 0) { loveNumber = "1" + loveNumber }
             else { loveNumber = "0" + loveNumber }
-            // alert("int_number & flag:" + (int_number & flag) + ", int_number: " + int_number + ", flag: " + flag)
             flag *= 2
         }
-        let loveNumberElement = document.getElementById("LoveNumber" + number)
-        loveNumberElement.innerText = loveNumber
 
         return loveNumber
     }
+    function test_love_number(number1, number2, number3, number4, number5, number6){
+        let loveNumber = calculate_love_number(number1)
+        let loveNumberElement = document.getElementById("LoveNumber1")
+        loveNumberElement.innerText = loveNumber
+        loveNumber = calculate_love_number(number2)
+        loveNumberElement = document.getElementById("LoveNumber2")
+        loveNumberElement.innerText = loveNumber
+        loveNumber = calculate_love_number(number3)
+        loveNumberElement = document.getElementById("LoveNumber3")
+        loveNumberElement.innerText = loveNumber
+        loveNumber = calculate_love_number(number4)
+        loveNumberElement = document.getElementById("LoveNumber4")
+        loveNumberElement.innerText = loveNumber
+        loveNumber = calculate_love_number(number5)
+        loveNumberElement = document.getElementById("LoveNumber5")
+        loveNumberElement.innerText = loveNumber
+        loveNumber = calculate_love_number(number6)
+        loveNumberElement = document.getElementById("LoveNumber6")
+        loveNumberElement.innerText = loveNumber
+    }
 </script>
 </head>
-<body onLoad="calculate_love_number(1);calculate_love_number(2);calculate_love_number(3);calculate_love_number(4);calculate_love_number(5);calculate_love_number(6);">
+<body onLoad="test_love_number(1, 2, 3, 4, 5, 6);">
     <div id="LoveNumber1"></div>
     <div id="LoveNumber2"></div>
     <div id="LoveNumber3"></div>
