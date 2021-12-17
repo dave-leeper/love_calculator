@@ -167,15 +167,18 @@
         loveNumber = LoveNumber.add(LoveNumber.convertIntToLoveNumber(number5), LoveNumber.convertIntToLoveNumber(number6))
         loveNumberElement = document.getElementById("LoveNumber9")
         loveNumberElement.innerText = "E + F) " + loveNumber.toString(true)
+        loveNumber = LoveNumber.add(LoveNumber.convertIntToLoveNumber(1), LoveNumber.convertIntToLoveNumber(-1))
+        loveNumberElement = document.getElementById("LoveNumber10")
+        loveNumberElement.innerText = "1 + -1) " + loveNumber.toString(true)
 
         loveNumber = LoveNumber.subtract(LoveNumber.convertIntToLoveNumber(number1), LoveNumber.convertIntToLoveNumber(number2))
-        loveNumberElement = document.getElementById("LoveNumber10")
+        loveNumberElement = document.getElementById("LoveNumber11")
         loveNumberElement.innerText = "A - B) " + loveNumber.toString(true)
         loveNumber = LoveNumber.subtract(LoveNumber.convertIntToLoveNumber(number3), LoveNumber.convertIntToLoveNumber(number4))
-        loveNumberElement = document.getElementById("LoveNumber11")
+        loveNumberElement = document.getElementById("LoveNumber12")
         loveNumberElement.innerText = "C - D) " + loveNumber.toString(true)
         loveNumber = LoveNumber.subtract(LoveNumber.convertIntToLoveNumber(number5), LoveNumber.convertIntToLoveNumber(number6))
-        loveNumberElement = document.getElementById("LoveNumber12")
+        loveNumberElement = document.getElementById("LoveNumber13")
         loveNumberElement.innerText = "E - F) " + loveNumber.toString(true)
     }
 </script>
@@ -192,9 +195,10 @@
     <div id="LoveNumber7"></div>
     <div id="LoveNumber8"></div>
     <div id="LoveNumber9"></div>
-    <div>Subtract</div>
     <div id="LoveNumber10"></div>
+    <div>Subtract</div>
     <div id="LoveNumber11"></div>
     <div id="LoveNumber12"></div>
+    <div id="LoveNumber13"></div>
 </body>
 </html>
