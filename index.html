@@ -3,41 +3,58 @@
 <head>
 <title>Love Calculator</title>
 <script>
+    class LoveNumber {
+        constructor(height, width) {
+            this.negative = 0
+            this.flags = "00000000000000000000000000000000"
+            this.counts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        }
+        toString() {
+            let result = this.flags
+            if (this.negative) {returl = "-" + result}
+            return result
+        }
+    }
     function convert_int_to_love_number(number){
         let flag = 0x1
+        let loveNumber = new LoveNumber()
         let intNumber = Math.round(number)
-        let isNegative = (0 > intNumber)
-        let loveNumber = ""
 
+        loveNumber.negative = (0 > intNumber)
+        loveNumber.flags = ""
         intNumber = Math.abs(intNumber)
         for (let loop = 1; loop < 32; loop++) {
-            if ((intNumber & flag ) !== 0) { loveNumber = "1" + loveNumber }
-            else { loveNumber = "0" + loveNumber }
+            if ((intNumber & flag ) !== 0) { 
+                loveNumber.flags = "1" + loveNumber.flags 
+                loveNumber.counts[loop] = 1
+            }
+            else { 
+                loveNumber.flags = "0" + loveNumber.flags 
+                loveNumber.counts[loop] = 0
+            }
             flag *= 2
         }
-        if (isNegative) { loveNumber = "-" + loveNumber}
-        console.log("loveNumber.length: " + loveNumber.length)
         return loveNumber
     }
     function test_love_number(number1, number2, number3, number4, number5, number6){
         let loveNumber = convert_int_to_love_number(number1)
         let loveNumberElement = document.getElementById("LoveNumber1")
-        loveNumberElement.innerText = loveNumber
+        loveNumberElement.innerText = loveNumber.toString()
         loveNumber = convert_int_to_love_number(number2)
         loveNumberElement = document.getElementById("LoveNumber2")
-        loveNumberElement.innerText = loveNumber
+        loveNumberElement.innerText = loveNumber.toString()
         loveNumber = convert_int_to_love_number(number3)
         loveNumberElement = document.getElementById("LoveNumber3")
-        loveNumberElement.innerText = loveNumber
+        loveNumberElement.innerText = loveNumber.toString()
         loveNumber = convert_int_to_love_number(number4)
         loveNumberElement = document.getElementById("LoveNumber4")
-        loveNumberElement.innerText = loveNumber
+        loveNumberElement.innerText = loveNumber.toString()
         loveNumber = convert_int_to_love_number(number5)
         loveNumberElement = document.getElementById("LoveNumber5")
-        loveNumberElement.innerText = loveNumber
+        loveNumberElement.innerText = loveNumber.toString()
         loveNumber = convert_int_to_love_number(number6)
         loveNumberElement = document.getElementById("LoveNumber6")
-        loveNumberElement.innerText = loveNumber
+        loveNumberElement.innerText = loveNumber.toString()
     }
 </script>
 </head>
