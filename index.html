@@ -131,24 +131,26 @@
                 if ("1" === this.negativeFlags[loop]) { 
                     let node = document.createElement("div")
                     wrapper.appendChild(node)
-                    hasChild = true;
-                    node.innerText = "-" + flag + "."
+                    if (hasChild) { node.innerText = "."}
+                    node.innerText += "-" + flag
                     if (includeSubscripts) {
                         node = document.createElement("sub")
                         wrapper.appendChild(node)
                         node.innerText = this.negativeCounts[loop]
                     }
+                    hasChild = true;
                 }
                 if ("1" === this.positiveFlags[loop]) { 
                     let node = document.createElement("div")
                     wrapper.appendChild(node)
-                    hasChild = true;
-                    node.innerText = flag + "."
+                    if (hasChild) { node.innerText = "."}
+                    node.innerText += flag
                     if (includeSubscripts) { 
                         node = document.createElement("sub")
                         wrapper.appendChild(node)
                         node.innerText = this.positiveCounts[loop]
                     }
+                    hasChild = true;
                 }
                 flag *= 2
             }
