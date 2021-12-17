@@ -93,6 +93,18 @@
             }
             return result
         }
+        toString(includeSubscripts) {
+            let negative = ""
+            let positive = ""
+            let flag = 0x1
+
+            for (let loop = 1; loop < 32; loop++) {
+                if ("1" === this.negativeFlags[loop]) { negative += "-" + flag + "."}
+                if ("1" === this.positiveFlags[loop]) { positive += flag + "."}
+                flag *= 2
+            }
+            return negative + positive
+        }
     }
     
     function test_love_number(number1, number2, number3, number4, number5, number6, includeSubscripts){
