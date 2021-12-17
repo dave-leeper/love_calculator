@@ -13,14 +13,19 @@
             else { loveNumber = "0" + loveNumber }
             flag *= 2
         }
-        let loveNumberElement = document.getElementById("LoveNumber")
+        let loveNumber1Element = document.getElementById("LoveNumber") + number
         loveNumberElement.innerText = loveNumber
 
         return loveNumber
     }
 </script>
 </head>
-<body onLoad="calculate_love_number(1)">
-    <div id="LoveNumber"></div>
+<body onLoad="calculate_love_number(1);calculate_love_number(2);calculate_love_number(3);calculate_love_number(4);calculate_love_number(5);calculate_love_number(6);">
+    <div id="LoveNumber1"></div>
+    <div id="LoveNumber2"></div>
+    <div id="LoveNumber3"></div>
+    <div id="LoveNumber4"></div>
+    <div id="LoveNumber5"></div>
+    <div id="LoveNumber6"></div>
 </body>
 </html>
