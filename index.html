@@ -10,8 +10,14 @@
             let intNumber = Math.round(number)
             let isNegative = (0 > intNumber)
 
+            if (0 === intNumber) {
+                loveNumber.positiveFlags[31] = "1"
+                loveNumber.positiveCounts[31] = 1
+                return loveNumber
+            }
+
             intNumber = Math.abs(intNumber)
-            for (let loop = 1; loop < 32; loop++) {
+            for (let loop = 2; loop < 32; loop++) {
                 if ((intNumber & flag ) !== 0) { 
                     if (!isNegative) {
                         loveNumber.positiveFlags[32 - loop] = "1"
@@ -42,27 +48,31 @@
                     loveNumber.positiveFlags[loop] = "1"
                     loveNumber.positiveCounts[loop] = number1.positiveCounts[loop] + number2.positiveCounts[loop]
                 }
-            }
-            for (let loop = 0; loop < number1.negativeFlags.length; loop++) {
                 if ("1" === number1.negativeFlags[loop] || "1" === number2.negativeFlags[loop]) {
                     loveNumber.negativeFlags[loop] = "1"
                     loveNumber.negativeCounts[loop] = number1.negativeCounts[loop] + number2.negativeCounts[loop]
                 }
             }
-            for (let loop = 0; loop < number1.positiveFlags.length; loop++) {
+            for (let loop = 0; loop < number1.positiveFlags.length - 1; loop++) {
                 if ("1" === number1.positiveFlags[loop] && "1" === number2.negativeFlags[loop]) {
                     if (0 === number1.positiveCounts[loop] - number2.negativeCounts[loop]) {
+                        loveNumber.positiveFlags[number1.positiveFlags.length - 1] = "1"
+                        loveNumber.positiveCounts[number1.positiveFlags.length - 1] = loveNumber.positiveCounts[loop] + loveNumber.negativeCounts[loop]
                         loveNumber.positiveFlags[loop] = "0"
                         loveNumber.positiveCounts[loop] = 0
                         loveNumber.negativeFlags[loop] = "0"
                         loveNumber.negativeCounts[loop] = 0
                     } else {
                         if (number1.positiveCounts[loop] > number2.positiveCounts[loop]) {
+                            loveNumber.positiveFlags[number1.positiveFlags.length - 1] = "1"
+                            loveNumber.positiveCounts[number1.positiveFlags.length - 1] = number2.positiveCounts[loop]
                             loveNumber.positiveFlags[loop] = "1"
                             loveNumber.positiveCounts[loop] = number1.positiveCounts[loop] - number2.positiveCounts[loop]
                             loveNumber.negativeFlags[loop] = "0"
                             loveNumber.negativeCounts[loop] = 0
                         } else {
+                            loveNumber.positiveFlags[number1.positiveFlags.length - 1] = "1"
+                            loveNumber.positiveCounts[number1.positiveFlags.length - 1] = number1.positiveCounts[loop]
                             loveNumber.positiveFlags[loop] = "0"
                             loveNumber.positiveCounts[loop] = 0
                             loveNumber.negativeFlags[loop] = "1"
@@ -127,7 +137,7 @@
             wrapper.style.display = "flex"
             wrapper.style.flexDirection = "row"
             parentNode.appendChild(wrapper)
-            for (let loop = this.negativeFlags.length - 1; loop >= 0; loop--) {
+            for (let loop = this.negativeFlags.length - 1; loop >= 1; loop--) {
                 if ("1" === this.negativeFlags[loop]) { 
                     let node = document.createElement("div")
                     wrapper.appendChild(node)
@@ -176,7 +186,7 @@
             let positive = ""
             let flag = 0x1
 
-            for (let loop = this.negativeFlags.length - 1; loop >= 0; loop--) {
+            for (let loop = this.negativeFlags.length - 1; loop >= 1; loop--) {
                 if ("1" === this.negativeFlags[loop]) { 
                     negative += "-" + flag + "."
                     if (includeSubscripts) { negative += "[" + this.negativeCounts[loop] + "]"}
