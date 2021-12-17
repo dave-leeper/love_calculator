@@ -71,7 +71,8 @@
                         }
                     }
                 }
-            }            return loveNumber
+            }
+            return loveNumber
         }
         static subtract(number1, number2){
             let loveNumber = new LoveNumber()
@@ -131,6 +132,10 @@
                     if (includeSubscripts) { positive += "[" + this.positiveCounts[loop] + "]"}
                 }
                 flag *= 2
+            }
+            if (0 === negative.length && 0 === positive.length) {
+                positive = "0"
+                if (includeSubscripts) { positive += "[0]" }
             }
             return negative + positive
         }
