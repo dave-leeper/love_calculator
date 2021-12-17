@@ -9,9 +9,17 @@
             this.flags = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             this.counts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         }
-        toString() {
-            let result = this.flags.join("")
-            if (this.negative) {result = "-" + result}
+        toString(includeSubscripts) {
+            if (!includeSubscripts) {
+                let result = this.flags.join("")
+                if (this.negative) {result = "-" + result}
+                return result
+            }
+            let result = ""
+            for (let loop = 0; loop < this.flags.length; loop++) {
+                result = result + this.flags[loop]
+                result = result + "[" + this.counts + "["
+            }
             return result
         }
     }
