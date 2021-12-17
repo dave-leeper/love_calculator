@@ -129,7 +129,7 @@
         toHTML(parentNode, includeSubscripts) {
             let negative = ""
             let positive = ""
-            let flag = 0x1
+            let flag = 0x0
             let hasChild = false
             let wrapper = document.createElement("div")
 
@@ -165,7 +165,8 @@
                     }
                     hasChild = true;
                 }
-                flag *= 2
+                if (0 === flag) { flag = 0x1 }
+                else { flag *= 2 }
             }
             if (!hasChild) {
                 let node = document.createElement("div")
