@@ -83,7 +83,7 @@
             let result = ""
             for (let loop = 0; loop < this.negativeFlags.length; loop++) {
                 result = result + "-" + this.negativeFlags[loop]
-                result = result + "[" + this.negativeFlags[loop] + "]"
+                result = result + "[" + this.negativeCounts[loop] + "]"
                 result = result + " "
             }
             for (let loop = 0; loop < this.positiveFlags.length; loop++) {
@@ -99,8 +99,14 @@
             let flag = 0x1
 
             for (let loop = this.negativeFlags.length - 1; loop >= 0; loop--) {
-                if ("1" === this.negativeFlags[loop]) { negative += "-" + flag + "."}
-                if ("1" === this.positiveFlags[loop]) { positive += flag + "."}
+                if ("1" === this.negativeFlags[loop]) { 
+                    negative += "-" + flag + "."
+                    if (includeSubscripts) { negative + "[" + this.negativeCounts[loop] + "]"}
+                }
+                if ("1" === this.positiveFlags[loop]) { 
+                    positive += flag + "."
+                    if (includeSubscripts) { positive + "[" + this.positiveCounts[loop] + "]"}
+                }
                 flag *= 2
             }
             return negative + positive
