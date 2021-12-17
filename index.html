@@ -37,8 +37,8 @@
         static add(number1, number2){
             let loveNumber = new LoveNumber()
             for (let loop = 0; loop < number1.positiveFlags.length; loop++) {
-                if ("1" === number1.positiveFlags[loop] && "1" === number2.positiveFlags[loop]) {
-                    if (0 === number1.positiveCounts[loop] - number2.positiveCounts[loop]) {
+                if ("1" === number1.positiveFlags[loop] && "1" === number2.negativeFlags[loop]) {
+                    if (0 === number1.positiveCounts[loop] - number2.negativeCounts[loop]) {
                         loveNumber.positiveFlags[loop] = "0"
                         loveNumber.positiveCounts[loop] = 0
                         loveNumber.negativeFlags[loop] = "0"
