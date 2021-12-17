@@ -135,6 +135,7 @@
                     node.innerText += "-" + flag
                     if (includeSubscripts) {
                         node = document.createElement("sub")
+                        node.style.verticalAlign = "sub"
                         wrapper.appendChild(node)
                         node.innerText = this.negativeCounts[loop]
                     }
