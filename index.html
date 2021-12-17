@@ -101,11 +101,11 @@
             for (let loop = this.negativeFlags.length - 1; loop >= 0; loop--) {
                 if ("1" === this.negativeFlags[loop]) { 
                     negative += "-" + flag + "."
-                    if (includeSubscripts) { negative + "[" + this.negativeCounts[loop] + "]"}
+                    if (includeSubscripts) { negative += "[" + this.negativeCounts[loop] + "]"}
                 }
                 if ("1" === this.positiveFlags[loop]) { 
                     positive += flag + "."
-                    if (includeSubscripts) { positive + "[" + this.positiveCounts[loop] + "]"}
+                    if (includeSubscripts) { positive += "[" + this.positiveCounts[loop] + "]"}
                 }
                 flag *= 2
             }
