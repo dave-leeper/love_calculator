@@ -124,6 +124,8 @@
             let hasChild = false
             let wrapper = document.createElement("div")
 
+            wrapper.style.display = "flex"
+            wrapper.style.flexDirection = "row"
             parentNode.appendChild(wrapper)
             for (let loop = this.negativeFlags.length - 1; loop >= 0; loop--) {
                 if ("1" === this.negativeFlags[loop]) { 
