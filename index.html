@@ -134,8 +134,9 @@
                     if (hasChild) { node.innerText = "."}
                     node.innerText += "-" + flag
                     if (includeSubscripts) {
-                        node = document.createElement("div")
+                        node = document.createElement("sub")
                         node.style.verticalAlign = "sub"
+                        node.style.alignSelf = "flex-end"
                         wrapper.appendChild(node)
                         node.innerText = this.negativeCounts[loop]
                     }
@@ -147,8 +148,9 @@
                     if (hasChild) { node.innerText = "."}
                     node.innerText += flag
                     if (includeSubscripts) { 
-                        node = document.createElement("div")
+                        node = document.createElement("sub")
                         node.style.verticalAlign = "sub"
+                        node.style.alignSelf = "flex-end"
                         wrapper.appendChild(node)
                         node.innerText = this.positiveCounts[loop]
                     }
@@ -161,8 +163,9 @@
                 wrapper.appendChild(node)
                 node.innerText = "0"
                 if (includeSubscripts) { 
-                    node = document.createElement("div")
+                    node = document.createElement("sub")
                     node.style.verticalAlign = "sub"
+                    node.style.alignSelf = "flex-end"
                     wrapper.appendChild(node)
                     node.innerText = "0" 
                 }
