@@ -183,6 +183,9 @@
         loveNumber = LoveNumber.subtract(LoveNumber.convertIntToLoveNumber(number5), LoveNumber.convertIntToLoveNumber(number6))
         loveNumberElement = document.getElementById("LoveNumber13")
         loveNumberElement.innerText = "E - F) " + loveNumber.toString(true)
+        loveNumber = LoveNumber.subtract(LoveNumber.convertIntToLoveNumber(1), LoveNumber.convertIntToLoveNumber(-1))
+        loveNumberElement = document.getElementById("LoveNumber14")
+        loveNumberElement.innerText = "1 - -1) " + loveNumber.toString(true)
     }
 </script>
 </head>
@@ -203,5 +206,6 @@
     <div id="LoveNumber11"></div>
     <div id="LoveNumber12"></div>
     <div id="LoveNumber13"></div>
+    <div id="LoveNumber14"></div>
 </body>
 </html>
