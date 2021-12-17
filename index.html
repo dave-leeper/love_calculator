@@ -24,12 +24,12 @@
         intNumber = Math.abs(intNumber)
         for (let loop = 1; loop < 32; loop++) {
             if ((intNumber & flag ) !== 0) { 
-                loveNumber.flags[loop] = "1"
-                loveNumber.counts[loop] = 1
+                loveNumber.flags[32 - loop] = "1"
+                loveNumber.counts[32 - loop] = 1
             }
             else { 
-                loveNumber.flags[loop] = "0"
-                loveNumber.counts[loop] = 0
+                loveNumber.flags[32 - loop] = "0"
+                loveNumber.counts[32 - loop] = 0
             }
             flag *= 2
         }
