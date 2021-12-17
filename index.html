@@ -42,8 +42,8 @@
         }
         toDebugString(includeSubscripts) {
             if (!includeSubscripts) {
-                let result = this.negativeFlags.join("-")
-                result += this.positiveFlags.join("")
+                let result = "-" + this.negativeFlags.join("")
+                result += "+" + this.positiveFlags.join("")
                 return result
             }
             let result = ""
