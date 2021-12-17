@@ -124,6 +124,16 @@
         loveNumber = LoveNumber.add(LoveNumber.convertIntToLoveNumber(number5), LoveNumber.convertIntToLoveNumber(number6))
         loveNumberElement = document.getElementById("LoveNumber9")
         loveNumberElement.innerText = loveNumber.toDebugString(true)
+
+        loveNumber = LoveNumber.subtract(LoveNumber.convertIntToLoveNumber(number1), LoveNumber.convertIntToLoveNumber(number2))
+        loveNumberElement = document.getElementById("LoveNumber10")
+        loveNumberElement.innerText = loveNumber.toDebugString(true)
+        loveNumber = LoveNumber.subtract(LoveNumber.convertIntToLoveNumber(number3), LoveNumber.convertIntToLoveNumber(number4))
+        loveNumberElement = document.getElementById("LoveNumber11")
+        loveNumberElement.innerText = loveNumber.toDebugString(true)
+        loveNumber = LoveNumber.subtract(LoveNumber.convertIntToLoveNumber(number5), LoveNumber.convertIntToLoveNumber(number6))
+        loveNumberElement = document.getElementById("LoveNumber12")
+        loveNumberElement.innerText = loveNumber.toDebugString(true)
     }
 </script>
 </head>
@@ -137,5 +147,8 @@
     <div id="LoveNumber7"></div>
     <div id="LoveNumber8"></div>
     <div id="LoveNumber9"></div>
+    <div id="LoveNumber10"></div>
+    <div id="LoveNumber11"></div>
+    <div id="LoveNumber12"></div>
 </body>
 </html>
