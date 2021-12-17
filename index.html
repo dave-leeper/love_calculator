@@ -122,27 +122,29 @@
             let positive = ""
             let flag = 0x1
             let hasChild = false
+            let wrapper = document.createElement("div")
 
+            parentNode.appendChild(wrapper)
             for (let loop = this.negativeFlags.length - 1; loop >= 0; loop--) {
                 if ("1" === this.negativeFlags[loop]) { 
                     let node = document.createElement("div")
-                    parentNode.appendChild(node)
+                    wrapper.appendChild(node)
                     hasChild = true;
                     node.innerText = "-" + flag + "."
                     if (includeSubscripts) {
                         node = document.createElement("sub")
-                        parentNode.appendChild(node)
+                        wrapper.appendChild(node)
                         node.innerText = this.negativeCounts[loop]
                     }
                 }
                 if ("1" === this.positiveFlags[loop]) { 
                     let node = document.createElement("div")
-                    parentNode.appendChild(node)
+                    wrapper.appendChild(node)
                     hasChild = true;
                     node.innerText = flag + "."
                     if (includeSubscripts) { 
                         node = document.createElement("sub")
-                        parentNode.appendChild(node)
+                        wrapper.appendChild(node)
                         node.innerText = this.positiveCounts[loop]
                     }
                 }
@@ -150,9 +152,11 @@
             }
             if (!hasChild) {
                 let node = document.createElement("div")
+                wrapper.appendChild(node)
                 node.innerText = "0"
                 if (includeSubscripts) { 
                     node = document.createElement("sub")
+                    wrapper.appendChild(node)
                     node.innerText = "0" 
                 }
             }
