@@ -17,9 +17,9 @@
                 return result
             }
             let result = ""
-            for (let loop = 0; loop < this.nagativeFlags.length; loop++) {
-                result = result + "-" + this.nagativeFlags[loop]
-                result = result + "[" + this.negativeCounts[loop] + "]"
+            for (let loop = 0; loop < this.negativeFlags.length; loop++) {
+                result = result + "-" + this.negativeFlags[loop]
+                result = result + "[" + this.negativeFlags[loop] + "]"
                 result = result + " "
             }
             for (let loop = 0; loop < this.positiveFlags.length; loop++) {
