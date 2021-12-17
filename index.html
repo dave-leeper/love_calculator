@@ -5,20 +5,27 @@
 <script>
     class LoveNumber {
         constructor(height, width) {
-            this.negative = 0
-            this.flags = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            this.counts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            this.positiveFlags = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            this.positiveCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            this.negativeFlags = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            this.negativeCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         }
         toString(includeSubscripts) {
             if (!includeSubscripts) {
-                let result = this.flags.join("")
-                if (this.negative) {result = "-" + result}
+                let result = this.negativeFlags.join("-")
+                result += this.positiveFlags.join("")
                 return result
             }
             let result = ""
-            for (let loop = 0; loop < this.flags.length; loop++) {
-                result = result + this.flags[loop]
-                result = result + "[" + this.counts[loop] + "]"
+            for (let loop = 0; loop < this.nagativeFlags.length; loop++) {
+                result = result + "-" + this.nagativeFlags[loop]
+                result = result + "[" + this.negativeCounts[loop] + "]"
+                result = result + " "
+            }
+            for (let loop = 0; loop < this.positiveFlags.length; loop++) {
+                result = result + this.positiveFlags[loop]
+                result = result + "[" + this.positiveCounts[loop] + "]"
+                result = result + " "
             }
             return result
         }
@@ -27,17 +34,27 @@
         let flag = 0x1
         let loveNumber = new LoveNumber()
         let intNumber = Math.round(number)
+        let isNegative = (0 > intNumber)
 
-        loveNumber.negative = (0 > intNumber)
         intNumber = Math.abs(intNumber)
         for (let loop = 1; loop < 32; loop++) {
             if ((intNumber & flag ) !== 0) { 
-                loveNumber.flags[32 - loop] = "1"
-                loveNumber.counts[32 - loop] = 1
+                if (!isNegative) {
+                    loveNumber.positiveFlags[32 - loop] = "1"
+                    loveNumber.positiveCounts[32 - loop] = 1
+                } else {
+                    loveNumber.negativeFlags[32 - loop] = "1"
+                    loveNumber.negativeCounts[32 - loop] = 1
+                }
             }
             else { 
-                loveNumber.flags[32 - loop] = "0"
-                loveNumber.counts[32 - loop] = 0
+                if (!isNegative) {
+                    loveNumber.positiveFlags[32 - loop] = "0"
+                    loveNumber.positiveCounts[32 - loop] = 0
+                } else {
+                    loveNumber.negativeFlags[32 - loop] = "0"
+                    loveNumber.negativeCounts[32 - loop] = 0
+                }
             }
             flag *= 2
         }
