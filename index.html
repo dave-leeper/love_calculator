@@ -117,6 +117,46 @@
             }
             return result
         }
+        toHTML(parentNode, includeSubscripts) {
+            let negative = ""
+            let positive = ""
+            let flag = 0x1
+            let hasChild = false
+
+            for (let loop = this.negativeFlags.length - 1; loop >= 0; loop--) {
+                if ("1" === this.negativeFlags[loop]) { 
+                    let node = document.createElement("div")
+                    parentNode.appendChild(node)
+                    hasChild = true;
+                    node.innerText = "-" + flag + "."
+                    if (includeSubscripts) {
+                        node = document.createElement("sub")
+                        parentNode.appendChild(node)
+                        node.innerText = this.negativeCounts[loop]
+                    }
+                }
+                if ("1" === this.positiveFlags[loop]) { 
+                    let node = document.createElement("div")
+                    parentNode.appendChild(node)
+                    hasChild = true;
+                    node.innerText = flag + "."
+                    if (includeSubscripts) { 
+                        node = document.createElement("sub")
+                        parentNode.appendChild(node)
+                        node.innerText = this.positiveCounts[loop]
+                    }
+                }
+                flag *= 2
+            }
+            if (!hasChild) {
+                let node = document.createElement("div")
+                node.innerText = "0"
+                if (includeSubscripts) { 
+                    node = document.createElement("sub")
+                    node.innerText = "0" 
+                }
+            }
+        }
         toString(includeSubscripts) {
             let negative = ""
             let positive = ""
@@ -144,22 +184,28 @@
     function test_love_number(number1, number2, number3, number4, number5, number6, includeSubscripts){
         let loveNumber = LoveNumber.convertIntToLoveNumber(number1)
         let loveNumberElement = document.getElementById("LoveNumber1")
-        loveNumberElement.innerText = "A) " + loveNumber.toString(includeSubscripts)
+        loveNumberElement.innerText = "A) "
+        loveNumber.toHTML(loveNumberElement, includeSubscripts)
         loveNumber = LoveNumber.convertIntToLoveNumber(number2)
         loveNumberElement = document.getElementById("LoveNumber2")
-        loveNumberElement.innerText = "B) " + loveNumber.toString(includeSubscripts)
+        loveNumberElement.innerText = "B) "
+        loveNumber.toHTML(loveNumberElement, includeSubscripts)
         loveNumber = LoveNumber.convertIntToLoveNumber(number3)
         loveNumberElement = document.getElementById("LoveNumber3")
-        loveNumberElement.innerText = "C) " + loveNumber.toString(includeSubscripts)
+        loveNumberElement.innerText = "C) "
+        loveNumber.toHTML(loveNumberElement, includeSubscripts)
         loveNumber = LoveNumber.convertIntToLoveNumber(number4)
         loveNumberElement = document.getElementById("LoveNumber4")
-        loveNumberElement.innerText = "D) " + loveNumber.toString(includeSubscripts)
+        loveNumberElement.innerText = "D) "
+        loveNumber.toHTML(loveNumberElement, includeSubscripts)
         loveNumber = LoveNumber.convertIntToLoveNumber(number5)
         loveNumberElement = document.getElementById("LoveNumber5")
-        loveNumberElement.innerText = "E) " + loveNumber.toString(includeSubscripts)
+        loveNumberElement.innerText = "E) "
+        loveNumber.toHTML(loveNumberElement, includeSubscripts)
         loveNumber = LoveNumber.convertIntToLoveNumber(number6)
         loveNumberElement = document.getElementById("LoveNumber6")
-        loveNumberElement.innerText = "F) " + loveNumber.toString(includeSubscripts)
+        loveNumberElement.innerText = "F) "
+        loveNumber.toHTML(loveNumberElement, includeSubscripts)
 
         loveNumber = LoveNumber.add(LoveNumber.convertIntToLoveNumber(number1), LoveNumber.convertIntToLoveNumber(number2))
         loveNumberElement = document.getElementById("LoveNumber7")
