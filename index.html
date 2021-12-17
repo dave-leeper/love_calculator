@@ -125,17 +125,17 @@
             for (let loop = this.negativeFlags.length - 1; loop >= 0; loop--) {
                 if ("1" === this.negativeFlags[loop]) { 
                     negative += "-" + flag + "."
-                    if (includeSubscripts) { negative += "<sub>" + this.negativeCounts[loop] + "</sub>"}
+                    if (includeSubscripts) { negative += "[" + this.negativeCounts[loop] + "]"}
                 }
                 if ("1" === this.positiveFlags[loop]) { 
                     positive += flag + "."
-                    if (includeSubscripts) { positive += "<sub>" + this.positiveCounts[loop] + "</sub>"}
+                    if (includeSubscripts) { positive += "[" + this.positiveCounts[loop] + "]"}
                 }
                 flag *= 2
             }
             if (0 === negative.length && 0 === positive.length) {
                 positive = "0"
-                if (includeSubscripts) { positive += "<sub>0</sub>" }
+                if (includeSubscripts) { positive += "[0]" }
             }
             return negative + positive
         }
