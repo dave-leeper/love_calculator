@@ -50,6 +50,24 @@
             }
             return loveNumber
         }
+        static subtract(number1, number2){
+            let loveNumber = new LoveNumber()
+            for (let loop = 0; loop < number1.positiveFlags.length; loop++) {
+                if ("1" === number1.positiveFlags[loop] || "1" === number2.positiveFlags[loop]) {
+                    loveNumber.positiveFlags[loop] = "1"
+                    loveNumber.positiveCounts[loop] = number1.positiveCounts[loop] - number2.positiveCounts[loop]
+                    if (0 === loveNumber.positiveCounts[loop]) { loveNumber.positiveFlags[loop] = "0" }
+                }
+            }
+            for (let loop = 0; loop < number1.negativeFlags.length; loop++) {
+                if ("1" === number1.negativeFlags[loop] || "1" === number2.negativeFlags[loop]) {
+                    loveNumber.negativeFlags[loop] = "1"
+                    loveNumber.negativeCounts[loop] = number1.negativeCounts[loop] - number2.negativeCounts[loop]
+                    if (0 === loveNumber.negativeCounts[loop]) { loveNumber.negativeFlags[loop] = "0" }
+                }
+            }
+            return loveNumber
+        }
         constructor() {
             this.positiveFlags = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             this.positiveCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
