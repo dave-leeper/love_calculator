@@ -6,7 +6,8 @@
     function calculate_love_number(number){
         let flag = 0x1
         let intNumber = Math.round(number)
-        let loveNumber = ((0 > intNumber)? "-" : "" )
+        let isNegative = (0 > intNumber)
+        let loveNumber = ""
 
         intNumber = Math.abs(intNumber)
         for (let loop = 1; loop < 32; loop++) {
@@ -14,6 +15,7 @@
             else { loveNumber = "0" + loveNumber }
             flag *= 2
         }
+        if (isNegative) { loveNumber = "-" + loveNumber}
         return loveNumber
     }
     function test_love_number(number1, number2, number3, number4, number5, number6){
