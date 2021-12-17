@@ -98,7 +98,7 @@
             let positive = ""
             let flag = 0x1
 
-            for (let loop = 1; loop < 32; loop++) {
+            for (let loop = negativeFlags.length - 1; loop >= 0; loop--) {
                 if ("1" === this.negativeFlags[loop]) { negative += "-" + flag + "."}
                 if ("1" === this.positiveFlags[loop]) { positive += flag + "."}
                 flag *= 2
