@@ -3,9 +3,24 @@
 <head>
 <title>Love Calculator</title>
 <script>
+    function calculate_love_number(number){
+        let flag = 0x1
+        let int_number = Math.round(number)
+        let loveNumber = ""
+
+        for (let loop = 1; loop < 32; loop++) {
+            if ((int_number & flag ) === 1) { loveNumber = "1" + loveNumber }
+            else { loveNumber = "0" + loveNumber }
+            flag *= 2
+        }
+        let loveNumberElement = document.getElementById("LoveNumber")
+        loveNumberElement.innerText = loveNumber
+
+        return loveNumber
+    }
 </script>
 </head>
-<body>
-
+<body onLoad="calculate_love_number(1)">
+    <div id="LoveNumber"></div>
 </body>
 </html>
