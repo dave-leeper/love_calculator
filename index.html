@@ -4,6 +4,36 @@
 <title>Love Calculator</title>
 <script>
     class LoveNumber {
+        static convertIntToLoveNumber(number){
+            let flag = 0x1
+            let loveNumber = new LoveNumber()
+            let intNumber = Math.round(number)
+            let isNegative = (0 > intNumber)
+
+            intNumber = Math.abs(intNumber)
+            for (let loop = 1; loop < 32; loop++) {
+                if ((intNumber & flag ) !== 0) { 
+                    if (!isNegative) {
+                        loveNumber.positiveFlags[32 - loop] = "1"
+                        loveNumber.positiveCounts[32 - loop] = 1
+                    } else {
+                        loveNumber.negativeFlags[32 - loop] = "1"
+                        loveNumber.negativeCounts[32 - loop] = 1
+                    }
+                }
+                else { 
+                    if (!isNegative) {
+                        loveNumber.positiveFlags[32 - loop] = "0"
+                        loveNumber.positiveCounts[32 - loop] = 0
+                    } else {
+                        loveNumber.negativeFlags[32 - loop] = "0"
+                        loveNumber.negativeCounts[32 - loop] = 0
+                    }
+                }
+                flag *= 2
+            }
+            return loveNumber
+        }
         constructor(height, width) {
             this.positiveFlags = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             this.positiveCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -30,53 +60,24 @@
             return result
         }
     }
-    function convert_int_to_love_number(number){
-        let flag = 0x1
-        let loveNumber = new LoveNumber()
-        let intNumber = Math.round(number)
-        let isNegative = (0 > intNumber)
-
-        intNumber = Math.abs(intNumber)
-        for (let loop = 1; loop < 32; loop++) {
-            if ((intNumber & flag ) !== 0) { 
-                if (!isNegative) {
-                    loveNumber.positiveFlags[32 - loop] = "1"
-                    loveNumber.positiveCounts[32 - loop] = 1
-                } else {
-                    loveNumber.negativeFlags[32 - loop] = "1"
-                    loveNumber.negativeCounts[32 - loop] = 1
-                }
-            }
-            else { 
-                if (!isNegative) {
-                    loveNumber.positiveFlags[32 - loop] = "0"
-                    loveNumber.positiveCounts[32 - loop] = 0
-                } else {
-                    loveNumber.negativeFlags[32 - loop] = "0"
-                    loveNumber.negativeCounts[32 - loop] = 0
-                }
-            }
-            flag *= 2
-        }
-        return loveNumber
-    }
+    
     function test_love_number(number1, number2, number3, number4, number5, number6, includeSubscripts){
-        let loveNumber = convert_int_to_love_number(number1)
+        let loveNumber = LoveNumber.convertIntToLoveNumber(number1)
         let loveNumberElement = document.getElementById("LoveNumber1")
         loveNumberElement.innerText = loveNumber.toDebugString(includeSubscripts)
-        loveNumber = convert_int_to_love_number(number2)
+        loveNumber = LoveNumber.convertIntToLoveNumber(number2)
         loveNumberElement = document.getElementById("LoveNumber2")
         loveNumberElement.innerText = loveNumber.toDebugString(includeSubscripts)
-        loveNumber = convert_int_to_love_number(number3)
+        loveNumber = LoveNumber.convertIntToLoveNumber(number3)
         loveNumberElement = document.getElementById("LoveNumber3")
         loveNumberElement.innerText = loveNumber.toDebugString(includeSubscripts)
-        loveNumber = convert_int_to_love_number(number4)
+        loveNumber = LoveNumber.convertIntToLoveNumber(number4)
         loveNumberElement = document.getElementById("LoveNumber4")
         loveNumberElement.innerText = loveNumber.toDebugString(includeSubscripts)
-        loveNumber = convert_int_to_love_number(number5)
+        loveNumber = LoveNumber.convertIntToLoveNumber(number5)
         loveNumberElement = document.getElementById("LoveNumber5")
         loveNumberElement.innerText = loveNumber.toDebugString(includeSubscripts)
-        loveNumber = convert_int_to_love_number(number6)
+        loveNumber = LoveNumber.convertIntToLoveNumber(number6)
         loveNumberElement = document.getElementById("LoveNumber6")
         loveNumberElement.innerText = loveNumber.toDebugString(includeSubscripts)
     }
