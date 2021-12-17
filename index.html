@@ -217,29 +217,37 @@
 
         loveNumber = LoveNumber.add(LoveNumber.convertIntToLoveNumber(number1), LoveNumber.convertIntToLoveNumber(number2))
         loveNumberElement = document.getElementById("LoveNumber7")
-        loveNumberElement.innerText = "A + B) " + loveNumber.toString(true)
+        loveNumberElement.innerText = "A + B) "
+        loveNumber.toHTML(loveNumberElement, true)
         loveNumber = LoveNumber.add(LoveNumber.convertIntToLoveNumber(number3), LoveNumber.convertIntToLoveNumber(number4))
         loveNumberElement = document.getElementById("LoveNumber8")
-        loveNumberElement.innerText = "C + D) " + loveNumber.toString(true)
+        loveNumberElement.innerText = "C + D) "
+        loveNumber.toHTML(loveNumberElement, true)
         loveNumber = LoveNumber.add(LoveNumber.convertIntToLoveNumber(number5), LoveNumber.convertIntToLoveNumber(number6))
         loveNumberElement = document.getElementById("LoveNumber9")
-        loveNumberElement.innerText = "E + F) " + loveNumber.toString(true)
+        loveNumberElement.innerText = "E + F) "
+        loveNumber.toHTML(loveNumberElement, true)
         loveNumber = LoveNumber.add(LoveNumber.convertIntToLoveNumber(1), LoveNumber.convertIntToLoveNumber(-1))
         loveNumberElement = document.getElementById("LoveNumber10")
-        loveNumberElement.innerText = "1 + -1) " + loveNumber.toString(true)
+        loveNumberElement.innerText = "1 + -1) "
+        loveNumber.toHTML(loveNumberElement, true)
 
         loveNumber = LoveNumber.subtract(LoveNumber.convertIntToLoveNumber(number1), LoveNumber.convertIntToLoveNumber(number2))
         loveNumberElement = document.getElementById("LoveNumber11")
-        loveNumberElement.innerText = "A - B) " + loveNumber.toString(true)
+        loveNumberElement.innerText = "A - B) "
+        loveNumber.toHTML(loveNumberElement, true)
         loveNumber = LoveNumber.subtract(LoveNumber.convertIntToLoveNumber(number3), LoveNumber.convertIntToLoveNumber(number4))
         loveNumberElement = document.getElementById("LoveNumber12")
-        loveNumberElement.innerText = "C - D) " + loveNumber.toString(true)
+        loveNumberElement.innerText = "C - D) "
+        loveNumber.toHTML(loveNumberElement, true)
         loveNumber = LoveNumber.subtract(LoveNumber.convertIntToLoveNumber(number5), LoveNumber.convertIntToLoveNumber(number6))
         loveNumberElement = document.getElementById("LoveNumber13")
-        loveNumberElement.innerText = "E - F) " + loveNumber.toString(true)
+        loveNumberElement.innerText = "E - F) "
+        loveNumber.toHTML(loveNumberElement, true)
         loveNumber = LoveNumber.subtract(LoveNumber.convertIntToLoveNumber(1), LoveNumber.convertIntToLoveNumber(-1))
         loveNumberElement = document.getElementById("LoveNumber14")
-        loveNumberElement.innerText = "1 - -1) " + loveNumber.toString(true)
+        loveNumberElement.innerText = "1 - -1) "
+        loveNumber.toHTML(loveNumberElement, true)
     }
 </script>
 </head>
