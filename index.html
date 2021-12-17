@@ -134,7 +134,7 @@
                     if (hasChild) { node.innerText = "."}
                     node.innerText += "-" + flag
                     if (includeSubscripts) {
-                        node = document.createElement("sub")
+                        node = document.createElement("div")
                         node.style.verticalAlign = "sub"
                         wrapper.appendChild(node)
                         node.innerText = this.negativeCounts[loop]
@@ -147,7 +147,7 @@
                     if (hasChild) { node.innerText = "."}
                     node.innerText += flag
                     if (includeSubscripts) { 
-                        node = document.createElement("sub")
+                        node = document.createElement("div")
                         node.style.verticalAlign = "sub"
                         wrapper.appendChild(node)
                         node.innerText = this.positiveCounts[loop]
@@ -161,7 +161,7 @@
                 wrapper.appendChild(node)
                 node.innerText = "0"
                 if (includeSubscripts) { 
-                    node = document.createElement("sub")
+                    node = document.createElement("div")
                     node.style.verticalAlign = "sub"
                     wrapper.appendChild(node)
                     node.innerText = "0" 
