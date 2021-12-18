@@ -184,7 +184,7 @@
         toString(includeSubscripts) {
             let negative = ""
             let positive = ""
-            let flag = 0x1
+            let flag = 0x0
 
             for (let loop = this.negativeFlags.length - 1; loop >= 1; loop--) {
                 if ("1" === this.negativeFlags[loop]) { 
@@ -195,7 +195,8 @@
                     positive += flag + "."
                     if (includeSubscripts) { positive += "[" + this.positiveCounts[loop] + "]"}
                 }
-                flag *= 2
+                if (0 === flag) { flag = 0x1 }
+                else { flag *= 2 }
             }
             if (0 === negative.length && 0 === positive.length) {
                 positive = "0"
