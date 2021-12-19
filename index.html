@@ -229,13 +229,13 @@
             return negative + positive  
         }
         getLowestCount() {
-            let lowestPositive = 0
-            let lowestNegative = 0
+            let lowestPositive = Number.MAX_VALUE
+            let lowestNegative = Number.MAX_VALUE
             for (let loop = 0; loop < this.positiveCounts.length; loop++) {
-                if (0 === lowestPositive || this.positiveCounts[loop] < lowestPositive) { lowestPositive = this.positiveCounts[loop] }
+                if (this.positiveCounts[loop] < lowestPositive) { lowestPositive = this.positiveCounts[loop] }
             }
             for (let loop = 0; loop < this.negativeCounts.length; loop++) {
-                if (0 === lowestNegative || this.negativeCounts[loop] < lowestNegative) { lowestNegative = this.negativeCounts[loop] }
+                if (this.negativeCounts[loop] < lowestNegative) { lowestNegative = this.negativeCounts[loop] }
             }
             return { lowestPositive, lowestNegative }
         }
@@ -436,7 +436,32 @@
         loveNumberNegative1.positiveCounts[0] = 999
         loveNumberNegative2.positiveCounts[0] = 999
         loveNumberNegative3.positiveCounts[0] = 999
+
+        testDeepClone(loveNumber0Clone, expected0True, true)
+        testDeepClone(loveNumber1Clone, expected1True, true)
+        testDeepClone(loveNumber2Clone, expected2True, true)
+        testDeepClone(loveNumber3Clone, expected3True, true)
+        testDeepClone(loveNumberNegative1Clone, expectedNegative1True, true)
+        testDeepClone(loveNumberNegative2Clone, expectedNegative2True, true)
+        testDeepClone(loveNumberNegative3Clone, expectedNegative3True, true)
+    }
+    function test_get_lowest_count(){
+        let loveNumber = LoveNumber.convertIntToLoveNumber(0)
+
+        for (let loop = 0; loop < 32; loop++) {
+            loveNumber.positiveFlags[loop] = "1"
+            loveNumber.positiveCounts[loop] = loop + 100
+            loveNumber.negativeFlags[loop] = "1"
+            loveNumber.negativeCounts[loop] = loop + 200
+        }
         
+        let testGetLowestCount = (loveNumber, expected) => {
+            let result = loveNumber.getLowestCount()
+            let testText = "loveNumber.getLowestCount()"
+            if (JSON.stringify(expected) !== JSON.stringify(result)) {console.log(testText + " failed. Expected " + JSON.stringify(expected) + ", got " + JSON.stringify(result) + ".")}
+        }
+        
+        testGetLowestCount(loveNumber, { lowestPositive: 100, lowestNegative: 200 } )
         /*
         console.log(loveNumber0.toDebugString(true))
         console.log(loveNumber1.toDebugString(true))
@@ -446,14 +471,6 @@
         console.log(loveNumberNegative2.toDebugString(true))
         console.log(loveNumberNegative3.toDebugString(true))
         */
-
-        testDeepClone(loveNumber0Clone, expected0True, true)
-        testDeepClone(loveNumber1Clone, expected1True, true)
-        testDeepClone(loveNumber2Clone, expected2True, true)
-        testDeepClone(loveNumber3Clone, expected3True, true)
-        testDeepClone(loveNumberNegative1Clone, expectedNegative1True, true)
-        testDeepClone(loveNumberNegative2Clone, expectedNegative2True, true)
-        testDeepClone(loveNumberNegative3Clone, expectedNegative3True, true)
     }
     function test_visual(){
         let number1 = 1
