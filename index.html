@@ -201,6 +201,11 @@
             let negative = ""
             let positive = ""
             let flag = 0x0
+            let trimTrailing = trimTrailingChars => (s, charToTrim) {
+                var regExp = new RegExp(charToTrim + "+$");
+                var result = s.replace(regExp, "");
+                return result;
+            }
 
             for (let loop = this.negativeFlags.length - 1; loop >= 1; loop--) {
                 if ("1" === this.negativeFlags[loop]) { 
@@ -218,7 +223,7 @@
                 positive = "0"
                 if (includeSubscripts) { positive += "[0]" }
             }
-            return negative + positive
+            return negative + trimTrailingChars(positive, ".");
         }
         getLowestCount() {
             let lowestPositive = 0
