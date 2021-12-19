@@ -264,10 +264,42 @@
     }
     function test_love_number(){
         test_convert_int_to_love_number()
+        test_to_debug_string()
         test_visual()
     }
 
     function test_convert_int_to_love_number(){
+        let loveNumber0 = LoveNumber.convertIntToLoveNumber(0)
+        let loveNumber1 = LoveNumber.convertIntToLoveNumber(1)
+        let loveNumber2 = LoveNumber.convertIntToLoveNumber(2)
+        let loveNumber3 = LoveNumber.convertIntToLoveNumber(3)
+        let loveNumberNegative1 = LoveNumber.convertIntToLoveNumber(-1)
+        let loveNumberNegative2 = LoveNumber.convertIntToLoveNumber(-2)
+        let loveNumberNegative3 = LoveNumber.convertIntToLoveNumber(-3)
+
+        let expected0False = "-00000000000000000000000000000000+00000000000000000000000000000001"
+        let expected1False = "-00000000000000000000000000000000+00000000000000000000000000000010"
+        let expected2False = "-00000000000000000000000000000000+00000000000000000000000000000100"
+        let expected3False = "-00000000000000000000000000000000+00000000000000000000000000000110"
+        let expectedNegative1False = "-00000000000000000000000000000010+00000000000000000000000000000000"
+        let expectedNegative2False = "-00000000000000000000000000000100+00000000000000000000000000000000"
+        let expectedNegative3False = "-00000000000000000000000000000110+00000000000000000000000000000000"
+        
+        let testConvertIntToLoveNumber = (loveNumber, expected, includeSubscripts) => {
+            let result = loveNumber.toDebugString(includeSubscripts)
+            let testText = "loveNumber.toDebugString(" + includeSubscripts + ")"
+            if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result)}
+        }
+
+        testConvertIntToLoveNumber(loveNumber0, expected0False, false)
+        testConvertIntToLoveNumber(loveNumber1, expected1False, false)
+        testConvertIntToLoveNumber(loveNumber2, expected2False, false)
+        testConvertIntToLoveNumber(loveNumber3, expected3False, false)
+        testConvertIntToLoveNumber(loveNumberNegative1, expectedNegative1False, false)
+        testConvertIntToLoveNumber(loveNumberNegative2, expectedNegative1False, false)
+        testConvertIntToLoveNumber(loveNumberNegative3, expectedNegative3False, false)
+    }
+    function test_to_debug_string(){
         let loveNumber0 = LoveNumber.convertIntToLoveNumber(0)
         let loveNumber1 = LoveNumber.convertIntToLoveNumber(1)
         let loveNumber2 = LoveNumber.convertIntToLoveNumber(2)
@@ -291,36 +323,26 @@
         let expectedNegative2True = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[1] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0]"
         let expectedNegative3True = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[1] -1[1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0]"
         
-        let testConvertIntToLoveNumber = (loveNumber, expected, includeSubscripts) => {
+        let testToDebugString = (loveNumber, expected, includeSubscripts) => {
             let result = loveNumber.toDebugString(includeSubscripts)
             let testText = "loveNumber.toDebugString(" + includeSubscripts + ")"
             if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result)}
         }
 
-        testConvertIntToLoveNumber(loveNumber0, expected0False, false)
-        testConvertIntToLoveNumber(loveNumber1, expected1False, false)
-        testConvertIntToLoveNumber(loveNumber2, expected2False, false)
-        testConvertIntToLoveNumber(loveNumber3, expected3False, false)
-        testConvertIntToLoveNumber(loveNumberNegative1, expectedNegative1False, false)
-        testConvertIntToLoveNumber(loveNumberNegative2, expectedNegative1False, false)
-        testConvertIntToLoveNumber(loveNumberNegative3, expectedNegative3False, false)
-        testConvertIntToLoveNumber(loveNumber0, expected0True, true)
-        testConvertIntToLoveNumber(loveNumber1, expected1True, true)
-        testConvertIntToLoveNumber(loveNumber2, expected2True, true)
-        testConvertIntToLoveNumber(loveNumber3, expected3True, true)
-        testConvertIntToLoveNumber(loveNumberNegative1, expectedNegative1True, true)
-        testConvertIntToLoveNumber(loveNumberNegative2, expectedNegative2True, true)
-        testConvertIntToLoveNumber(loveNumberNegative3, expectedNegative3True, true)
-
-        /*
-        console.log(loveNumber0.toDebugString(true))
-        console.log(loveNumber1.toDebugString(true))
-        console.log(loveNumber2.toDebugString(true))
-        console.log(loveNumber3.toDebugString(true))
-        console.log(loveNumberNegative1.toDebugString(true))
-        console.log(loveNumberNegative2.toDebugString(true))
-        console.log(loveNumberNegative3.toDebugString(true))
-        */
+        testToDebugString(loveNumber0, expected0False, false)
+        testToDebugString(loveNumber1, expected1False, false)
+        testToDebugString(loveNumber2, expected2False, false)
+        testToDebugString(loveNumber3, expected3False, false)
+        testToDebugString(loveNumberNegative1, expectedNegative1False, false)
+        testToDebugString(loveNumberNegative2, expectedNegative1False, false)
+        testToDebugString(loveNumberNegative3, expectedNegative3False, false)
+        testToDebugString(loveNumber0, expected0True, true)
+        testToDebugString(loveNumber1, expected1True, true)
+        testToDebugString(loveNumber2, expected2True, true)
+        testToDebugString(loveNumber3, expected3True, true)
+        testToDebugString(loveNumberNegative1, expectedNegative1True, true)
+        testToDebugString(loveNumberNegative2, expectedNegative2True, true)
+        testToDebugString(loveNumberNegative3, expectedNegative3True, true)
     }
 
     function test_visual(){
