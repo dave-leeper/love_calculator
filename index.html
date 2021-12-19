@@ -262,8 +262,37 @@
             return { newNumber, remainder }
         }
     }
-    
-    function test_love_number(number1, number2, number3, number4, number5, number6, includeSubscripts){
+    function test_love_number(){
+        test_convert_int_to_love_number()
+        test_visual()
+    }
+
+    function test_convert_int_to_love_number(){
+        let loveNumber0 = LoveNumber.convertIntToLoveNumber(0)
+        let loveNumber1 = LoveNumber.convertIntToLoveNumber(1)
+        let loveNumber2 = LoveNumber.convertIntToLoveNumber(2)
+        let loveNumber3 = LoveNumber.convertIntToLoveNumber(3)
+        let loveNumberNegative1 = LoveNumber.convertIntToLoveNumber(-1)
+        let loveNumberNegative2 = LoveNumber.convertIntToLoveNumber(-2)
+        let loveNumberNegative3 = LoveNumber.convertIntToLoveNumber(-3)
+
+        console.log(loveNumber0.toDebugString())
+        console.log(loveNumber1.toDebugString())
+        console.log(loveNumber2.toDebugString())
+        console.log(loveNumber3.toDebugString())
+        console.log(loveNumberNegative1.toDebugString())
+        console.log(loveNumberNegative2.toDebugString())
+        console.log(loveNumberNegative3.toDebugString())
+    }
+
+    function test_visual(){
+        let number1 = 1
+        let number2 = 2
+        let number3 = 3
+        let number4 = -1
+        let number5 = -2
+        let number6 = -3
+        let includeSubscripts = true
         let loveNumber = LoveNumber.convertIntToLoveNumber(number1)
         let loveNumberElement = document.getElementById("LoveNumber1")
         loveNumberElement.innerText = "A) "
@@ -325,7 +354,7 @@
     }
 </script>
 </head>
-<body onLoad="test_love_number(1, 2, 3, -1, -2, -3, true);">
+<body onLoad="test_love_number();">
     <div>Convert</div>
     <div id="LoveNumber1" style="display: flex; flex-direction: row; gap: 5px;"></div>
     <div id="LoveNumber2" style="display: flex; flex-direction: row; gap: 5px;"></div>
