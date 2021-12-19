@@ -239,8 +239,8 @@
             }
             return { lowestPositive, lowestNegative }
         }
-        getNumberBasedOnLowestCounts(loveNumber, lowestCounts) {
-            let remainder = LoveNumber.deepClone(loveNumber)
+        getNumberBasedOnLowestCounts(lowestCounts) {
+            let remainder = LoveNumber.deepClone(this)
             let newNumber = new LoveNumber()
 
             if (0 !== lowestCounts.lowestPositive) {
@@ -463,6 +463,26 @@
         }
         
         testGetLowestCount(loveNumber, { lowestPositive: 100, lowestNegative: 200 } )
+    }
+    function test_get_number_based_on_lowest_counts(){
+        let loveNumber = LoveNumber.convertIntToLoveNumber(0)
+
+        for (let loop = 0; loop < 32; loop++) {
+            loveNumber.positiveFlags[loop] = "1"
+            loveNumber.positiveCounts[loop] = loop + 100
+            loveNumber.negativeFlags[loop] = "1"
+            loveNumber.negativeCounts[loop] = loop + 200
+        }
+        
+        let testGetLowestCount = (loveNumber, expected) => {
+            let lowestCount = loveNumber.getLowestCount()
+            let result = loveNumber.getNumberBasedOnLowestCounts(lowestCount)
+            let testText = "loveNumber.getNumberBasedOnLowestCounts()"
+            console.log(JSON.stringify(result))
+            if (JSON.stringify(expected) !== JSON.stringify(result)) {console.log(testText + " failed. Expected " + JSON.stringify(expected) + ", got " + JSON.stringify(result) + ".")}
+        }
+        
+        testGetLowestCount(loveNumber, "x"" )
         /*
         console.log(loveNumber0.toDebugString(true))
         console.log(loveNumber1.toDebugString(true))
