@@ -415,6 +415,13 @@
         let loveNumberNegative1 = LoveNumber.convertIntToLoveNumber(-1)
         let loveNumberNegative2 = LoveNumber.convertIntToLoveNumber(-2)
         let loveNumberNegative3 = LoveNumber.convertIntToLoveNumber(-3)
+        let loveNumber0Clone = LoveNumber.deepClone(loveNumber0)
+        let loveNumber1Clone = LoveNumber.deepClone(loveNumber1)
+        let loveNumber2Clone = LoveNumber.deepClone(loveNumber2)
+        let loveNumber3Clone = LoveNumber.deepClone(loveNumber3)
+        let loveNumberNegative1Clone = LoveNumber.deepClone(loveNumberNegative1)
+        let loveNumberNegative2Clone = LoveNumber.deepClone(loveNumberNegative2)
+        let loveNumberNegative3Clone = LoveNumber.deepClone(loveNumberNegative3)
 
         let expected0True = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1]"
         let expected1True = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 0[0]"
@@ -430,13 +437,21 @@
             if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result + ".")}
         }
 
-        testDeepClone(LoveNumber.deepClone(loveNumber0), expected0True, true)
-        testDeepClone(LoveNumber.deepClone(loveNumber1), expected1True, true)
-        testDeepClone(LoveNumber.deepClone(loveNumber2), expected2True, true)
-        testDeepClone(LoveNumber.deepClone(loveNumber3), expected3True, true)
-        testDeepClone(LoveNumber.deepClone(loveNumberNegative1), expectedNegative1True, true)
-        testDeepClone(LoveNumber.deepClone(loveNumberNegative2), expectedNegative2True, true)
-        testDeepClone(LoveNumber.deepClone(loveNumberNegative3), expectedNegative3True, true)
+        loveNumber0 = new LoveNumber()
+        loveNumber1 = new LoveNumber()
+        loveNumber2 = new LoveNumber()
+        loveNumber3 = new LoveNumber()
+        loveNumberNegative1 = new LoveNumber()
+        loveNumberNegative2 = new LoveNumber()
+        loveNumberNegative3 = new LoveNumber()
+        
+        testDeepClone(loveNumber0Clone, expected0True, true)
+        testDeepClone(loveNumber1Clone, expected1True, true)
+        testDeepClone(loveNumber2Clone, expected2True, true)
+        testDeepClone(loveNumber3Clone, expected3True, true)
+        testDeepClone(loveNumberNegative1Clone, expectedNegative1True, true)
+        testDeepClone(loveNumberNegative2Clone, expectedNegative2True, true)
+        testDeepClone(loveNumberNegative3Clone, expectedNegative3True, true)
     }
     function test_visual(){
         let number1 = 1
