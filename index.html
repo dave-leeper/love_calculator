@@ -384,14 +384,6 @@
             if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result + ".")}
         }
 
-        console.log(loveNumber0.toString(true))
-        console.log(loveNumber1.toString(true))
-        console.log(loveNumber2.toString(true))
-        console.log(loveNumber3.toString(true))
-        console.log(loveNumberNegative1.toString(true))
-        console.log(loveNumberNegative2.toString(true))
-        console.log(loveNumberNegative3.toString(true))
-
         testToString(loveNumber0, expected0False, false)
         testToString(loveNumber1, expected1False, false)
         testToString(loveNumber2, expected2False, false)
@@ -445,6 +437,14 @@
         loveNumberNegative2 = new LoveNumber()
         loveNumberNegative3 = new LoveNumber()
         
+        console.log(loveNumber0.toString(true))
+        console.log(loveNumber1.toString(true))
+        console.log(loveNumber2.toString(true))
+        console.log(loveNumber3.toString(true))
+        console.log(loveNumberNegative1.toString(true))
+        console.log(loveNumberNegative2.toString(true))
+        console.log(loveNumberNegative3.toString(true))
+
         testDeepClone(loveNumber0Clone, expected0True, true)
         testDeepClone(loveNumber1Clone, expected1True, true)
         testDeepClone(loveNumber2Clone, expected2True, true)
