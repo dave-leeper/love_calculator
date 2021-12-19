@@ -360,13 +360,13 @@
         let loveNumberNegative2 = LoveNumber.convertIntToLoveNumber(-2)
         let loveNumberNegative3 = LoveNumber.convertIntToLoveNumber(-3)
 
-        let expected0False = ""
-        let expected1False = ""
-        let expected2False = ""
-        let expected3False = ""
-        let expectedNegative1False = ""
-        let expectedNegative2False = ""
-        let expectedNegative3False = ""
+        let expected0False = "0"
+        let expected1False = "1"
+        let expected2False = "2"
+        let expected3False = "1.2"
+        let expectedNegative1False = "-1"
+        let expectedNegative2False = "-2"
+        let expectedNegative3False = "-1.-2"
         let expected0True = ""
         let expected1True = ""
         let expected2True = ""
@@ -381,15 +381,14 @@
             if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result + ".")}
         }
 
-        console.log(loveNumber0.toString())
-        console.log(loveNumber1.toString())
-        console.log(loveNumber2.toString())
-        console.log(loveNumber3.toString())
-        console.log(loveNumberNegative1.toString())
-        console.log(loveNumberNegative2.toString())
-        console.log(loveNumberNegative3.toString())
+        console.log(loveNumber0.toString(true))
+        console.log(loveNumber1.toString(true))
+        console.log(loveNumber2.toString(true))
+        console.log(loveNumber3.toString(true))
+        console.log(loveNumberNegative1.toString(true))
+        console.log(loveNumberNegative2.toString(true))
+        console.log(loveNumberNegative3.toString(true))
 
-        /*
         testToString(loveNumber0, expected0False, false)
         testToString(loveNumber1, expected1False, false)
         testToString(loveNumber2, expected2False, false)
@@ -397,6 +396,7 @@
         testToString(loveNumberNegative1, expectedNegative1False, false)
         testToString(loveNumberNegative2, expectedNegative1False, false)
         testToString(loveNumberNegative3, expectedNegative3False, false)
+        /*
         testToString(loveNumber0, expected0True, true)
         testToString(loveNumber1, expected1True, true)
         testToString(loveNumber2, expected2True, true)
