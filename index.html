@@ -429,13 +429,13 @@
             if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result + ".")}
         }
 
-        loveNumber0 = new LoveNumber()
-        loveNumber1 = new LoveNumber()
-        loveNumber2 = new LoveNumber()
-        loveNumber3 = new LoveNumber()
-        loveNumberNegative1 = new LoveNumber()
-        loveNumberNegative2 = new LoveNumber()
-        loveNumberNegative3 = new LoveNumber()
+        loveNumber0.positiveCounts[0] = 999
+        loveNumber1.positiveCounts[0] = 999
+        loveNumber2.positiveCounts[0] = 999
+        loveNumber3.positiveCounts[0] = 999
+        loveNumberNegative1.positiveCounts[0] = 999
+        loveNumberNegative2.positiveCounts[0] = 999
+        loveNumberNegative3.positiveCounts[0] = 999
         
         console.log(loveNumber0.toString(true))
         console.log(loveNumber1.toString(true))
