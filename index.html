@@ -289,7 +289,7 @@
         let testConvertIntToLoveNumber = (loveNumber, expected, includeSubscripts) => {
             let result = loveNumber.toDebugString(includeSubscripts)
             let testText = "loveNumber.toDebugString(" + includeSubscripts + ")"
-            if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result)}
+            if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result + ".")}
         }
 
         testConvertIntToLoveNumber(loveNumber0, expected0False, false)
@@ -327,7 +327,7 @@
         let testToDebugString = (loveNumber, expected, includeSubscripts) => {
             let result = loveNumber.toDebugString(includeSubscripts)
             let testText = "loveNumber.toDebugString(" + includeSubscripts + ")"
-            if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result)}
+            if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result + ".")}
         }
 
         testToDebugString(loveNumber0, expected0False, false)
@@ -372,7 +372,7 @@
         let testToString = (loveNumber, expected, includeSubscripts) => {
             let result = loveNumber.toString(includeSubscripts)
             let testText = "loveNumber.toString(" + includeSubscripts + ")"
-            if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result)}
+            if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result + ".")}
         }
 
         console.log(loveNumber0.toString())
