@@ -475,15 +475,21 @@
             loveNumber.negativeCounts[loop] = loop + 200
         }
         
-        let testGetLowestCount = (loveNumber, expected) => {
+        let testGetLowestCount = (loveNumber, expectedNewNumber, expectedRemainder) => {
             let lowestCount = loveNumber.getLowestCount()
             let result = loveNumber.getNumberBasedOnLowestCounts(lowestCount)
+            let newNumber = result.newNumber
+            let remainder = result.remainder
             let testText = "loveNumber.getNumberBasedOnLowestCounts()"
-            console.log(JSON.stringify(result))
-            if (JSON.stringify(expected) !== JSON.stringify(result)) {console.log(testText + " failed. Expected " + JSON.stringify(expected) + ", got " + JSON.stringify(result) + ".")}
+            console.log(newNumber.toDebugString(true))
+            console.log(remainder.toDebugString(true))
+            if (expectedNewNumber !== newNumber.toDebugString(true)) {console.log(testText + " failed. Expected " + expectedNewNumber + ", got " + newNumber.toDebugString(true) + ".")}
+            if (expectedRemainder !== remainder.toDebugString(true)) {console.log(testText + " failed. Expected " + expectedRemainder + ", got " + remainder.toDebugString(true) + ".")}
         }
         
         testGetLowestCount(loveNumber, "x")
+        /*
+        */
         /*
         console.log(loveNumber0.toDebugString(true))
         console.log(loveNumber1.toDebugString(true))
