@@ -483,13 +483,13 @@
             let testText = "loveNumber.getNumberBasedOnLowestCounts()"
             if (expectedNewNumber !== newNumber.toDebugString(true)) {console.log(testText + " failed. Expected " + expectedNewNumber + ", got " + newNumber.toDebugString(true) + ".")}
             if (expectedRemainder !== remainder.toDebugString(true)) {console.log(testText + " failed. Expected " + expectedRemainder + ", got " + remainder.toDebugString(true) + ".")}
+            return result
         }
         
         let expectedNewNumber = "-1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] -1[200] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100] 1[100]"
         let expectedRemainder = "-0[0] -1[1] -1[2] -1[3] -1[4] -1[5] -1[6] -1[7] -1[8] -1[9] -1[10] -1[11] -1[12] -1[13] -1[14] -1[15] -1[16] -1[17] -1[18] -1[19] -1[20] -1[21] -1[22] -1[23] -1[24] -1[25] -1[26] -1[27] -1[28] -1[29] -1[30] -1[31] 0[0] 1[1] 1[2] 1[3] 1[4] 1[5] 1[6] 1[7] 1[8] 1[9] 1[10] 1[11] 1[12] 1[13] 1[14] 1[15] 1[16] 1[17] 1[18] 1[19] 1[20] 1[21] 1[22] 1[23] 1[24] 1[25] 1[26] 1[27] 1[28] 1[29] 1[30] 1[31]"
-        testGetLowestCount(loveNumber, expectedNewNumber, expectedRemainder)
-        /*
-        */
+        let result = testGetLowestCount(loveNumber, expectedNewNumber, expectedRemainder)
+        let result = testGetLowestCount(result.remainder, "x", "x")
         /*
         console.log(loveNumber0.toDebugString(true))
         console.log(loveNumber1.toDebugString(true))
