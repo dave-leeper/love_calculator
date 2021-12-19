@@ -4,6 +4,22 @@
 <title>Love Calculator</title>
 <script>
     class LoveNumber {
+        static deepClone(loveNumber){
+            let clone = new LoveNumber()
+            for (let loop = 0; loop < loveNumber.positiveFlags.length; loop++) {
+                clone.positiveFlags[loop] = loveNumber.positiveFlags[loop]
+            }
+            for (let loop = 0; loop < loveNumber.positiveCounts.length; loop++) {
+                clone.positiveCounts[loop] = loveNumber.positiveCounts[loop]
+            }
+            for (let loop = 0; loop < loveNumber.negativeFlags.length; loop++) {
+                clone.negativeFlags[loop] = loveNumber.negativeFlags[loop]
+            }
+            for (let loop = 0; loop < loveNumber.negativeCounts.length; loop++) {
+                clone.negativeCounts[loop] = loveNumber.negativeCounts[loop]
+            }
+            return clone
+        }
         static convertIntToLoveNumber(number){
             let flag = 0x1
             let loveNumber = new LoveNumber()
@@ -203,6 +219,47 @@
                 if (includeSubscripts) { positive += "[0]" }
             }
             return negative + positive
+        }
+        getLowestCount() {
+            let lowestPositive = 0
+            let lowestNegative = 0
+            for (let loop = 0; loop < this.positiveCounts.length; loop++) {
+                if (0 === lowestPositive || this.positiveCounts[loop] < lowestPositive) { lowestPositive = this.positiveCounts[loop] }
+            }
+            for (let loop = 0; loop < this.negativeCounts.length; loop++) {
+                if (0 === lowestNegative || this.negativeCounts[loop] < lowestNegative) { lowestNegative = this.negativeCounts[loop] }
+            }
+            return { lowestPositive, lowestNegative }
+        }
+        getNumberBasedOnLowestCounts(loveNumber, lowestCounts) {
+            let remainder = LoveNumber.deepClone(loveNumber)
+            let newNumber = new LoveNumber()
+
+            if (0 !== lowestCounts.lowestPositive) {
+                for (let loop = 0; loop < remainder.positiveCounts.length; loop++) {
+                    if (remainder.positiveCounts[loop] >= lowestCounts.lowestPositive) { 
+                        newNumber.positiveFlags[loop] = "1"
+                        newNumber.positiveCounts[loop] = lowestCounts.lowestPositive
+                        remainder.positiveCounts[loop] = remainder.positiveCounts[loop] - lowestCounts.lowestPositive
+                        if (0 === remainder.positiveCounts[loop]) {
+                            remainder.positiveFlags[loop] = "0"
+                        }
+                    }
+                }
+            }
+            if (0 !== lowestCounts.lowestNegative) {
+                for (let loop = 0; loop < remainder.negativeCounts.length; loop++) {
+                    if (remainder.negativeCounts[loop] >= lowestCounts.lowestNegative) { 
+                        newNumber.negativeFlags[loop] = "1"
+                        newNumber.negativeCounts[loop] = lowestCounts.lowestNegative
+                        remainder.negativeCounts[loop] = remainder.negativeCounts[loop] - lowestCounts.lowestNegative
+                        if (0 === remainder.negativeCounts[loop]) {
+                            remainder.negativeFlags[loop] = "0"
+                        }
+                    }
+                }
+            }
+            return { newNumber, remainder }
         }
     }
     
