@@ -481,8 +481,6 @@
             let newNumber = result.newNumber
             let remainder = result.remainder
             let testText = "loveNumber.getNumberBasedOnLowestCounts()"
-            console.log(newNumber.toDebugString(true))
-            console.log(remainder.toDebugString(true))
             if (expectedNewNumber !== newNumber.toDebugString(true)) {console.log(testText + " failed. Expected " + expectedNewNumber + ", got " + newNumber.toDebugString(true) + ".")}
             if (expectedRemainder !== remainder.toDebugString(true)) {console.log(testText + " failed. Expected " + expectedRemainder + ", got " + remainder.toDebugString(true) + ".")}
         }
