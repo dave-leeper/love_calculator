@@ -222,6 +222,7 @@
                 positive = "0"
                 if (includeSubscripts) { positive += "[0]" }
             }
+            negative = trimTrailingChars(negative, ".")
             positive = trimTrailingChars(positive, ".")
             return negative + positive  
         }
