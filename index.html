@@ -208,12 +208,14 @@
 
             for (let loop = this.negativeFlags.length - 1; loop >= 1; loop--) {
                 if ("1" === this.negativeFlags[loop]) { 
-                    negative += "-" + flag + "."
+                    negative += "-" + flag
                     if (includeSubscripts) { negative += "[" + this.negativeCounts[loop] + "]"}
+                    negative += "."
                 }
                 if ("1" === this.positiveFlags[loop]) { 
-                    positive += flag + "."
+                    positive += flag
                     if (includeSubscripts) { positive += "[" + this.positiveCounts[loop] + "]"}
+                    positive += "."
                 }
                 if (0 === flag) { flag = 0x1 }
                 else { flag *= 2 }
@@ -367,13 +369,13 @@
         let expectedNegative1False = "-1"
         let expectedNegative2False = "-2"
         let expectedNegative3False = "-1.-2"
-        let expected0True = ""
-        let expected1True = ""
-        let expected2True = ""
-        let expected3True = ""
-        let expectedNegative1True = ""
-        let expectedNegative2True = ""
-        let expectedNegative3True = ""
+        let expected0True = "0[1]"
+        let expected1True = "1[1]"
+        let expected2True = "2[1]"
+        let expected3True = "1[1].2[1]"
+        let expectedNegative1True = "-1[1]"
+        let expectedNegative2True = "-2[1]"
+        let expectedNegative3True = "-1[1].-2[1]"
         
         let testToString = (loveNumber, expected, includeSubscripts) => {
             let result = loveNumber.toString(includeSubscripts)
@@ -396,7 +398,6 @@
         testToString(loveNumberNegative1, expectedNegative1False, false)
         testToString(loveNumberNegative2, expectedNegative1False, false)
         testToString(loveNumberNegative3, expectedNegative3False, false)
-        /*
         testToString(loveNumber0, expected0True, true)
         testToString(loveNumber1, expected1True, true)
         testToString(loveNumber2, expected2True, true)
@@ -404,7 +405,6 @@
         testToString(loveNumberNegative1, expectedNegative1True, true)
         testToString(loveNumberNegative2, expectedNegative2True, true)
         testToString(loveNumberNegative3, expectedNegative3True, true)
-        */
     }
     function test_visual(){
         let number1 = 1
