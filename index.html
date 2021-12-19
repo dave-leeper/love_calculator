@@ -201,7 +201,7 @@
             let negative = ""
             let positive = ""
             let flag = 0x0
-            let trimTrailing = trimTrailingChars => (s, charToTrim) {
+            let trimTrailing = (s, charToTrim) => {
                 var regExp = new RegExp(charToTrim + "+$");
                 var result = s.replace(regExp, "");
                 return result;
