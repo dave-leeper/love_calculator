@@ -276,13 +276,32 @@
         let loveNumberNegative2 = LoveNumber.convertIntToLoveNumber(-2)
         let loveNumberNegative3 = LoveNumber.convertIntToLoveNumber(-3)
 
-        console.log(loveNumber0.toDebugString())
-        console.log(loveNumber1.toDebugString())
-        console.log(loveNumber2.toDebugString())
-        console.log(loveNumber3.toDebugString())
-        console.log(loveNumberNegative1.toDebugString())
-        console.log(loveNumberNegative2.toDebugString())
-        console.log(loveNumberNegative3.toDebugString())
+        let expected0False = "-00000000000000000000000000000000+00000000000000000000000000000001"
+        let expected1False = "-00000000000000000000000000000000+00000000000000000000000000000010"
+        let expected2False = "-00000000000000000000000000000000+00000000000000000000000000000100"
+        let expected3False = "-00000000000000000000000000000000+00000000000000000000000000000110"
+        let expectedNegative1False = "-00000000000000000000000000000010+00000000000000000000000000000000"
+        let expectedNegative2False = "-00000000000000000000000000000100+00000000000000000000000000000000"
+        let expectedNegative3False = "-00000000000000000000000000000110+00000000000000000000000000000000"
+        
+        let testConvertIntToLoveNumber = (loveNumber, expected, includeSubscripts) => {
+            let result = loveNumber.toDebugString(includeSubscripts)
+            let testText = "loveNumber.toDebugString(" + includeSubscripts + ")"
+            if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result)}
+        }
+
+        testConvertIntToLoveNumber(loveNumber0, expected0False, false)
+        testConvertIntToLoveNumber(loveNumber1, expected1False, false)
+        testConvertIntToLoveNumber(loveNumber2, expected2False, false)
+        testConvertIntToLoveNumber(loveNumber3, expected3False, false)
+
+        console.log(loveNumber0.toDebugString(true))
+        console.log(loveNumber1.toDebugString(true))
+        console.log(loveNumber2.toDebugString(true))
+        console.log(loveNumber3.toDebugString(true))
+        console.log(loveNumberNegative1.toDebugString(true))
+        console.log(loveNumberNegative2.toDebugString(true))
+        console.log(loveNumberNegative3.toDebugString(true))
     }
 
     function test_visual(){
