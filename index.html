@@ -274,6 +274,7 @@
         test_convert_int_to_love_number()
         test_to_debug_string()
         test_to_string()
+        test_deep_clone()
         test_visual()
     }
 
@@ -406,6 +407,37 @@
         testToString(loveNumberNegative2, expectedNegative2True, true)
         testToString(loveNumberNegative3, expectedNegative3True, true)
     }
+    function test_deep_clone(){
+        let loveNumber0 = LoveNumber.convertIntToLoveNumber(0)
+        let loveNumber1 = LoveNumber.convertIntToLoveNumber(1)
+        let loveNumber2 = LoveNumber.convertIntToLoveNumber(2)
+        let loveNumber3 = LoveNumber.convertIntToLoveNumber(3)
+        let loveNumberNegative1 = LoveNumber.convertIntToLoveNumber(-1)
+        let loveNumberNegative2 = LoveNumber.convertIntToLoveNumber(-2)
+        let loveNumberNegative3 = LoveNumber.convertIntToLoveNumber(-3)
+
+        let expected0True = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1]"
+        let expected1True = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 0[0]"
+        let expected2True = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 0[0] 0[0]"
+        let expected3True = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 1[1] 0[0]"
+        let expectedNegative1True = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0]"
+        let expectedNegative2True = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[1] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0]"
+        let expectedNegative3True = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[1] -1[1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0]"
+        
+        let testDeepClone = (loveNumber, expected, includeSubscripts) => {
+            let result = loveNumber.toDebugString(includeSubscripts)
+            let testText = "loveNumber.toDebugString(" + includeSubscripts + ")"
+            if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result + ".")}
+        }
+
+        testDeepClone(LoveNumber.deepClone(loveNumber0), expected0True, true)
+        testDeepClone(LoveNumber.deepClone(loveNumber1), expected1True, true)
+        testDeepClone(LoveNumber.deepClone(loveNumber2), expected2True, true)
+        testDeepClone(LoveNumber.deepClone(loveNumber3), expected3True, true)
+        testDeepClone(LoveNumber.deepClone(loveNumberNegative1), expectedNegative1True, true)
+        testDeepClone(LoveNumber.deepClone(loveNumberNegative2), expectedNegative2True, true)
+        testDeepClone(LoveNumber.deepClone(loveNumberNegative3), expectedNegative3True, true)
+    }
     function test_visual(){
         let number1 = 1
         let number2 = 2
@@ -475,7 +507,7 @@
     }
 </script>
 </head>
-<body onLoad="test_love_number();">
+<body onLoad="test_love_number()">
     <div>Convert</div>
     <div id="LoveNumber1" style="display: flex; flex-direction: row; gap: 5px;"></div>
     <div id="LoveNumber2" style="display: flex; flex-direction: row; gap: 5px;"></div>
