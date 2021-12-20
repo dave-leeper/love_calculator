@@ -470,7 +470,7 @@
         loveNumber.positiveCounts[1] = 100
         loveNumber.negativeFlags[2] = "1"
         loveNumber.negativeCounts[2] = 200
-        testGetLowestCount(loveNumber, { lowestPositive: 200, lowestNegative: Number.MAX_VALUE } )
+        testGetLowestCount(loveNumber, { lowestPositive: Number.MAX_VALUE, lowestNegative: 200 } )
     }
     function test_get_number_based_on_lowest_counts(){
         let loveNumber = LoveNumber.convertIntToLoveNumber(0)
