@@ -232,9 +232,11 @@
             let lowestPositive = Number.MAX_VALUE
             let lowestNegative = Number.MAX_VALUE
             for (let loop = 0; loop < this.positiveCounts.length; loop++) {
+                if ("1" !== (this.positiveFlags[loop]) { continue }
                 if (this.positiveCounts[loop] < lowestPositive) { lowestPositive = this.positiveCounts[loop] }
             }
             for (let loop = 0; loop < this.negativeCounts.length; loop++) {
+                if ("1" !== (this.negativeFlags[loop]) { continue }
                 if (this.negativeCounts[loop] < lowestNegative) { lowestNegative = this.negativeCounts[loop] }
             }
             return { lowestPositive, lowestNegative }
