@@ -449,6 +449,11 @@
     }
     function test_get_lowest_count(){
         let loveNumber = LoveNumber.convertIntToLoveNumber(0)
+        let testGetLowestCount = (loveNumber, expected) => {
+            let result = loveNumber.getLowestCount()
+            let testText = "loveNumber.getLowestCount()"
+            if (JSON.stringify(expected) !== JSON.stringify(result)) {console.log(testText + " failed. Expected " + JSON.stringify(expected) + ", got " + JSON.stringify(result) + ".")}
+        }
 
         for (let loop = 0; loop < 32; loop++) {
             loveNumber.positiveFlags[loop] = "1"
@@ -456,14 +461,14 @@
             loveNumber.negativeFlags[loop] = "1"
             loveNumber.negativeCounts[loop] = loop + 200
         }
-        
-        let testGetLowestCount = (loveNumber, expected) => {
-            let result = loveNumber.getLowestCount()
-            let testText = "loveNumber.getLowestCount()"
-            if (JSON.stringify(expected) !== JSON.stringify(result)) {console.log(testText + " failed. Expected " + JSON.stringify(expected) + ", got " + JSON.stringify(result) + ".")}
-        }
-        
         testGetLowestCount(loveNumber, { lowestPositive: 100, lowestNegative: 200 } )
+
+        loveNumber = new LoveNumber()
+        loveNumber.positiveFlags[1] = "0"
+        loveNumber.positiveCounts[1] = 100
+        loveNumber.negativeFlags[2] = "1"
+        loveNumber.negativeCounts[2] = 200
+        testGetLowestCount(loveNumber, { lowestPositive: 200, lowestNegative: Number.MAX_VALUE } )
     }
     function test_get_number_based_on_lowest_counts(){
         let loveNumber = LoveNumber.convertIntToLoveNumber(0)
