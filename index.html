@@ -4,6 +4,39 @@
 <title>Love Calculator</title>
 <script>
     class LoveNumber {
+
+        static FLAG_0                   = 31
+        static FLAG_1                   = 30
+        static FLAG_2                   = 29
+        static FLAG_4                   = 28
+        static FLAG_8                   = 27
+        static FLAG_16                  = 26
+        static FLAG_32                  = 25
+        static FLAG_64                  = 24
+        static FLAG_128                 = 23
+        static FLAG_256                 = 22
+        static FLAG_512                 = 21
+        static FLAG_1024                = 20
+        static FLAG_2048                = 19
+        static FLAG_4096                = 18
+        static FLAG_8192                = 17
+        static FLAG_16384               = 16
+        static FLAG_32768               = 15
+        static FLAG_65536               = 14
+        static FLAG_131072              = 13
+        static FLAG_262144              = 12
+        static FLAG_524288              = 11
+        static FLAG_1048576             = 10
+        static FLAG_2097152             = 9
+        static FLAG_4194304             = 8
+        static FLAG_8388608             = 7
+        static FLAG_16777216            = 6
+        static FLAG_33554432            = 5
+        static FLAG_67108864            = 4
+        static FLAG_134217728           = 3
+        static FLAG_268435456           = 2
+        static FLAG_536870912           = 1
+        static FLAG_1073741824          = 0
         static deepClone(loveNumber){
             let clone = new LoveNumber()
             for (let loop = 0; loop < loveNumber.positiveFlags.length; loop++) {
@@ -505,11 +538,13 @@
         expectedRemainder = "-0[0] -0[0] -0[0] -1[1] -1[2] -1[3] -1[4] -1[5] -1[6] -1[7] -1[8] -1[9] -1[10] -1[11] -1[12] -1[13] -1[14] -1[15] -1[16] -1[17] -1[18] -1[19] -1[20] -1[21] -1[22] -1[23] -1[24] -1[25] -1[26] -1[27] -1[28] -1[29] 0[0] 0[0] 0[0] 1[1] 1[2] 1[3] 1[4] 1[5] 1[6] 1[7] 1[8] 1[9] 1[10] 1[11] 1[12] 1[13] 1[14] 1[15] 1[16] 1[17] 1[18] 1[19] 1[20] 1[21] 1[22] 1[23] 1[24] 1[25] 1[26] 1[27] 1[28] 1[29]"
         result = testGetLowestCount(result.remainder, expectedNewNumber, expectedRemainder)
 
-        let loveNumber1 = LoveNumber.convertIntToLoveNumber(1)
-        let loveNumberNegative1 = LoveNumber.convertIntToLoveNumber(-1)
+        loveNumber = new LoveNumber()
+
+        loveNumber.positiveFlags[LoveNumber.FLAG_1] = "1"
+        loveNumber.positiveCounts[LoveNumber.FLAG_1] = 1
+        loveNumber.negativeFlags[LoveNumber.FLAG_2] = "1"
+        loveNumber.negativeCounts[LoveNumber.FLAG_2] = -1
         
-        loveNumber =  LoveNumber.add(loveNumber1, loveNumber1)
-        loveNumber =  LoveNumber.add(loveNumber, loveNumberNegative1)
         console.log(loveNumber.toDebugString(true))
 
         /*
