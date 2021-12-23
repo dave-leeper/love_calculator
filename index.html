@@ -280,6 +280,7 @@
 
             if (0 !== lowestCounts.lowestPositive) {
                 for (let loop = 0; loop < remainder.positiveCounts.length; loop++) {
+                    if ("1" !== this.positiveFlags[loop]) { continue }
                     if (remainder.positiveCounts[loop] >= lowestCounts.lowestPositive) { 
                         newNumber.positiveFlags[loop] = "1"
                         newNumber.positiveCounts[loop] = lowestCounts.lowestPositive
@@ -292,6 +293,7 @@
             }
             if (0 !== lowestCounts.lowestNegative) {
                 for (let loop = 0; loop < remainder.negativeCounts.length; loop++) {
+                    if ("1" !== this.negativeFlags[loop]) { continue }
                     if (remainder.negativeCounts[loop] >= lowestCounts.lowestNegative) { 
                         newNumber.negativeFlags[loop] = "1"
                         newNumber.negativeCounts[loop] = lowestCounts.lowestNegative
@@ -545,7 +547,8 @@
         loveNumber.negativeFlags[LoveNumber.FLAG_2] = "1"
         loveNumber.negativeCounts[LoveNumber.FLAG_2] = -1
         result = testGetLowestCount(loveNumber, "x", "y")
-
+        // -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] -1[-1] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 0[0]
+        // -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[1] -0[0] -0[1] -0[1] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0]
         
         console.log(loveNumber.toDebugString(true))
         // -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[-1] -0[0] -0[0] 
