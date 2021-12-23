@@ -544,8 +544,12 @@
         loveNumber.positiveCounts[LoveNumber.FLAG_1] = 1
         loveNumber.negativeFlags[LoveNumber.FLAG_2] = "1"
         loveNumber.negativeCounts[LoveNumber.FLAG_2] = -1
+        result = testGetLowestCount(loveNumber, "x", "y")
+
         
         console.log(loveNumber.toDebugString(true))
+        // -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[-1] -0[0] -0[0] 
+        // 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 0[0]
 
         /*
         console.log(loveNumber0.toDebugString(true))
