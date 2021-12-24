@@ -624,7 +624,12 @@
             return result
         }
         let loveNumber = LoveNumber.convertIntToLoveNumber(0)
+
         testGetNumberArray(loveNumber, [loveNumber])
+        loveNumber = LoveNumber.convertIntToLoveNumber(1)
+        testGetNumberArray(loveNumber, [loveNumber])    
+        loveNumber = LoveNumber.add(loveNumber, LoveNumber.convertIntToLoveNumber(2))
+        testGetNumberArray(loveNumber, [loveNumber])    
     }
     function test_visual(){
         let number1 = 1
