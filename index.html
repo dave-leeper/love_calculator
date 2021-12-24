@@ -614,7 +614,7 @@
     function test_get_number_array()
     {
         let testGetNumberArray = (loveNumber, expectedArray) => {
-            let result = loveNumber.formatNumber()
+            let result = loveNumber.getNumberArray()
             let testText = "loveNumber.formatNumber()"
             if (expectedArray.length !== result.length) {console.log(testText + " failed. Expected array length of " + expectedArray.length + ", got " + result.length + ".")}
             for (let loop = 0; loop < expectedArray.length; loop++) {
