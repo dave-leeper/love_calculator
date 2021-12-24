@@ -334,7 +334,7 @@
        getNumberArray() {
             if (this.isZero()) { return [this] }
             
-            let result = []
+            let finalResult = []
             let newNumber = null
             let remainder = this
 
@@ -344,9 +344,9 @@
                 
                 newNumber = result.newNumber
                 remainder = result.remainder
-                result.push(newNumber)
+                finalResult.push(newNumber)
             } while (!remainder.isZero())
-            return result
+            return finalResult
        }
     }
     function test_love_number(){
