@@ -623,12 +623,18 @@
             }
             return result
         }
-        let loveNumber = LoveNumber.convertIntToLoveNumber(0)
+        let loveNumber0 = LoveNumber.convertIntToLoveNumber(0)
+        let loveNumber1 = LoveNumber.convertIntToLoveNumber(1)
+        let loveNumber2 = LoveNumber.convertIntToLoveNumber(2)
+        let loveNumber3 = LoveNumber.add(loveNumber1, loveNumber2)
+        let loveNumber = LoveNumber.deepClone(loveNumber0)
 
         testGetNumberArray(loveNumber, [loveNumber])
-        loveNumber = LoveNumber.convertIntToLoveNumber(1)
+        loveNumber =LoveNumber.deepClone(loveNumber1)
         testGetNumberArray(loveNumber, [loveNumber])    
-        loveNumber = LoveNumber.add(loveNumber, LoveNumber.convertIntToLoveNumber(2))
+        loveNumber =LoveNumber.deepClone(loveNumber2)
+        testGetNumberArray(loveNumber, [loveNumber])    
+        loveNumber = LoveNumber.deepClone(loveNumber3)
         testGetNumberArray(loveNumber, [loveNumber])    
     }
     function test_visual(){
