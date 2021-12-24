@@ -143,14 +143,12 @@
                 if ("1" === number1.positiveFlags[loop] || "1" === number2.positiveFlags[loop]) {
                     loveNumber.positiveFlags[loop] = "1"
                     loveNumber.positiveCounts[loop] = number1.positiveCounts[loop] - number2.positiveCounts[loop]
-                    if (0 === loveNumber.positiveCounts[loop]) { loveNumber.positiveFlags[loop] = "0" }
                 }
             }
             for (let loop = 0; loop < number1.negativeFlags.length; loop++) {
                 if ("1" === number1.negativeFlags[loop] || "1" === number2.negativeFlags[loop]) {
                     loveNumber.negativeFlags[loop] = "1"
                     loveNumber.negativeCounts[loop] = number1.negativeCounts[loop] - number2.negativeCounts[loop]
-                    if (0 === loveNumber.negativeCounts[loop]) { loveNumber.negativeFlags[loop] = "0" }
                 }
             }
             return loveNumber
@@ -676,6 +674,9 @@
         loveNumber = LoveNumber.subtract(loveNumber3, LoveNumber.subtract(loveNumberNegative3, loveNumberNegative3))
         expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[0] -1[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 1[1] 0[0]"
         if (loveNumber.toDebugString(true) !== expected) {console.log(testText + " failed. Expected " + expected + ", got " + loveNumber.toDebugString(true) + ".")}
+
+        // -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[-1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[0] 0[0]
+        // -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[-1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0].
 
     }
     function test_get_lowest_count(){
