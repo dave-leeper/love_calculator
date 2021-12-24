@@ -594,6 +594,11 @@
         expectedRemainder = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0]"
         result = testGetLowestCount(loveNumber, expectedNewNumber, expectedRemainder)
         
+        loveNumber = LoveNumber.add(LoveNumber.convertIntToLoveNumber(3), LoveNumber.convertIntToLoveNumber(-1))
+        expectedNewNumber = "x"
+        expectedRemainder = "y"
+        result = testGetLowestCount(loveNumber, expectedNewNumber, expectedRemainder)
+
         /*
         console.log(loveNumber0.toDebugString(true))
         console.log(loveNumber1.toDebugString(true))
@@ -650,7 +655,6 @@
         testGetNumberArray(loveNumber, [loveNumber3, loveNumber1])
         loveNumber = LoveNumber.add(loveNumberNegative3, loveNumberNegative1)
         testGetNumberArray(loveNumber, [loveNumberNegative3, loveNumberNegative1])
-
         loveNumber = LoveNumber.add(loveNumber3, loveNumberNegative1)
         testGetNumberArray(loveNumber, [loveNumber3, loveNumberNegative1])
 
