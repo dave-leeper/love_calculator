@@ -623,6 +623,11 @@
         let loveNumberNegative1 = LoveNumber.convertIntToLoveNumber(-1)
         let loveNumberNegative2 = LoveNumber.convertIntToLoveNumber(-2)
         let loveNumberNegative3 = LoveNumber.convertIntToLoveNumber(-3)
+        let loveNumber = LoveNumber.subtract(loveNumber0, loveNumber0)
+        let expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0]"
+        let testText = "LoveNumber.subtract()"
+
+        if (loveNumber.toDebugString(true) !== expected) {console.log(testText + " failed. Expected " + expected + ", got " + loveNumber.toDebugString(true) + ".")}
     }
     function test_get_lowest_count(){
         let loveNumber = LoveNumber.convertIntToLoveNumber(0)
