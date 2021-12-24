@@ -306,6 +306,17 @@
             }
             return { newNumber, remainder }
         }
+        isZero() {
+            for (let loop = 0; loop < this.positiveFlags.length; loop++) {
+                if ("0" !== this.positiveFlags[loop]) { return false }
+                if (0 !== this.positiveCounts[loop]) { return false }
+            }
+            for (let loop = 0; loop < this.negativeFlags.length; loop++) {
+                if ("0" !== this.negativeFlags[loop]) { return false }
+                if (0 !== this.negativeCounts[loop]) { return false }
+            }
+            return true
+       }
     }
     function test_love_number(){
         test_convert_int_to_love_number()
@@ -314,6 +325,7 @@
         test_deep_clone()
         test_get_lowest_count()
         test_get_number_based_on_lowest_counts()
+        test_is_zero()
         test_visual()
     }
 
@@ -564,6 +576,14 @@
         console.log(loveNumberNegative3.toDebugString(true))
         */
     }
+    function test_is_zero() {
+        let loveNumber = new LoveNumber()
+        if (!loveNumber.isZero()) {console.log("isZero() failed. Expected true, got false.")}
+        
+        loveNumber = LoveNumber.convertIntToLoveNumber(1)
+        if (loveNumber.isZero()) {console.log("isZero() failed. Expected false, got true.")}
+    }
+
     function test_visual(){
         let number1 = 1
         let number2 = 2
