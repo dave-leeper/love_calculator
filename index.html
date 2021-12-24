@@ -153,6 +153,17 @@
             }
             return loveNumber
         }
+        static isEqual(number1, number2){
+            for (let loop = 0; loop < number1.positiveFlags.length; loop++) {
+                if (number1.positiveFlags[loop] !== number2.positiveFlags[loop]
+                || number1.positiveCounts[loop] !== number2.positiveCounts[loop]
+                || number1.negativeFlags[loop] !== number2.negativeFlags[loop]
+                || number1.negativeCounts[loop] !== number2.negativeCounts[loop]) {
+                    return false
+                }
+            }
+            return true
+        }
         constructor() {
             this.positiveFlags = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
             this.positiveCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -320,6 +331,23 @@
             }
             return true
        }
+       getNumberArray() {
+            if (this.isZero()) { return [this] }
+            
+            let result = []
+            let newNumber = null
+            let remainder = this
+
+            do {
+                let lowestCount = remainder.getLowestCount()
+                let result = remainder.getNumberBasedOnLowestCounts(lowestCount)
+                
+                newNumber = result.newNumber
+                remainder = result.remainder
+                result.push(newNumber)
+            } while (!remainder.isZero())
+            return result
+       }
     }
     function test_love_number(){
         test_convert_int_to_love_number()
@@ -329,6 +357,7 @@
         test_get_lowest_count()
         test_get_number_based_on_lowest_counts()
         test_is_zero()
+        test_get_number_array()
         test_visual()
     }
 
@@ -582,7 +611,21 @@
         loveNumber = LoveNumber.convertIntToLoveNumber(1)
         if (loveNumber.isZero()) {console.log("isZero() failed. Expected false, got true.")}
     }
-
+    function test_get_number_array()
+    {
+        let testGetNumberArray = (loveNumber, expectedArray) => {
+            let result = loveNumber.formatNumber()
+            let testText = "loveNumber.formatNumber()"
+            if (expectedArray.length !== result.length) {console.log(testText + " failed. Expected array length of " + expectedArray.length + ", got " + result.length + ".")}
+            for (let loop = 0; loop < expectedArray.length; loop++) {
+                if (LoveNumber.isEqual(expectedArray[loop], result[loop])) { continue; }
+                console.log(testText + " failed at loop " + loop + ". Expected " + expectedArray[loop].toDebugString(true) + ", got " + result[loop].toDebugString(true) + ".")
+            }
+            return result
+        }
+        let loveNumber = LoveNumber.convertIntToLoveNumber(0)
+        testGetNumberArray(loveNumber, [loveNumber])
+    }
     function test_visual(){
         let number1 = 1
         let number2 = 2
