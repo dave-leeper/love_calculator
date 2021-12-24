@@ -539,8 +539,13 @@
         let loveNumberNegative2 = LoveNumber.convertIntToLoveNumber(-2)
         let loveNumberNegative3 = LoveNumber.convertIntToLoveNumber(-3)
         let loveNumber = LoveNumber.add(loveNumber0, loveNumber1)
+        let expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 1[1]"
+        let testText = "LoveNumber.add()"
 
-        console.log("test_add: " + loveNumber.toDebugString(true))
+        if (loveNumber.toDebugString(true) !== expected) {console.log(testText + " failed. Expected " + expected + ", got " + loveNumber.toDebugString(true) + ".")}
+        loveNumber = LoveNumber.add(loveNumber0, loveNumber2)
+        expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 0[0] 1[1]"
+        if (loveNumber.toDebugString(true) !== expected) {console.log(testText + " failed. Expected " + expected + ", got " + loveNumber.toDebugString(true) + ".")}
     }
     function test_subtract(){
 
