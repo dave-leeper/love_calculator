@@ -615,6 +615,25 @@
         expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[1] -1[1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 0[0] 0[0]"
         if (loveNumber.toDebugString(true) !== expected) {console.log(testText + " failed. Expected " + expected + ", got " + loveNumber.toDebugString(true) + ".")}
 
+        loveNumber = LoveNumber.subtract(LoveNumber.subtract(loveNumber1, loveNumber1), loveNumberNegative1)
+        expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[-1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[0] 0[0]"
+        if (loveNumber.toDebugString(true) !== expected) {console.log(testText + " failed. Expected " + expected + ", got " + loveNumber.toDebugString(true) + ".")}
+        loveNumber = LoveNumber.subtract(loveNumber1, LoveNumber.subtract(loveNumberNegative1, loveNumberNegative1))
+        expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 0[0]"
+        if (loveNumber.toDebugString(true) !== expected) {console.log(testText + " failed. Expected " + expected + ", got " + loveNumber.toDebugString(true) + ".")}
+        loveNumber = LoveNumber.subtract(LoveNumber.subtract(loveNumber2, loveNumber2), loveNumberNegative2)
+        expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[1] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[0] 0[0] 0[0]"
+        if (loveNumber.toDebugString(true) !== expected) {console.log(testText + " failed. Expected " + expected + ", got " + loveNumber.toDebugString(true) + ".")}
+        loveNumber = LoveNumber.subtract(loveNumber2, LoveNumber.subtract(loveNumberNegative2, loveNumberNegative2))
+        expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 0[0] 0[0]"
+        if (loveNumber.toDebugString(true) !== expected) {console.log(testText + " failed. Expected " + expected + ", got " + loveNumber.toDebugString(true) + ".")}
+        loveNumber = LoveNumber.subtract(LoveNumber.subtract(loveNumber3, loveNumber3), loveNumberNegative3)
+        expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[1] -1[1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[0] 1[0] 0[0]"
+        if (loveNumber.toDebugString(true) !== expected) {console.log(testText + " failed. Expected " + expected + ", got " + loveNumber.toDebugString(true) + ".")}
+        loveNumber = LoveNumber.subtract(loveNumber3, LoveNumber.subtract(loveNumberNegative3, loveNumberNegative3))
+        expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[0] -1[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 1[1] 0[0]"
+        if (loveNumber.toDebugString(true) !== expected) {console.log(testText + " failed. Expected " + expected + ", got " + loveNumber.toDebugString(true) + ".")}
+
     }
     function test_subtract(){
         let loveNumber0 = LoveNumber.convertIntToLoveNumber(0)
