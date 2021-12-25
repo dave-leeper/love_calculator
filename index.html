@@ -356,6 +356,7 @@
         test_deep_clone()
         test_add()
         test_subtract()
+        test_is_equal()
         /*
         test_get_lowest_count()
         test_get_number_based_on_lowest_counts()
@@ -694,6 +695,46 @@
         loveNumber = LoveNumber.subtract(loveNumberNegative3, loveNumber2)
         expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[1] -1[1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[-1] 0[0] 0[0]"
         if (loveNumber.toDebugString(true) !== expected) {console.log(testText + " failed. Expected " + expected + ", got " + loveNumber.toDebugString(true) + ".")}
+    }
+    function test_is_equal() {
+        let loveNumber1 = LoveNumber.convertIntToLoveNumber(0)
+        let loveNumber2 = LoveNumber.convertIntToLoveNumber(0)
+
+        if (!LoveNuber.isEqual(loveNumber1, loveNumber2)) {console.log("LoveNumber.isEqual() failed. Expected true, got false.")}
+        loveNumber1 = LoveNumber.convertIntToLoveNumber(1)
+        loveNumber2 = LoveNumber.convertIntToLoveNumber(1)
+        if (!LoveNuber.isEqual(loveNumber1, loveNumber2)) {console.log("LoveNumber.isEqual() failed. Expected true, got false.")}
+        loveNumber1 = LoveNumber.convertIntToLoveNumber(2)
+        loveNumber2 = LoveNumber.convertIntToLoveNumber(2)
+        if (!LoveNuber.isEqual(loveNumber1, loveNumber2)) {console.log("LoveNumber.isEqual() failed. Expected true, got false.")}
+        loveNumber1 = LoveNumber.convertIntToLoveNumber(3)
+        loveNumber2 = LoveNumber.convertIntToLoveNumber(3)
+        if (!LoveNuber.isEqual(loveNumber1, loveNumber2)) {console.log("LoveNumber.isEqual() failed. Expected true, got false.")}
+        loveNumber1 = LoveNumber.convertIntToLoveNumber(-1)
+        loveNumber2 = LoveNumber.convertIntToLoveNumber(-1)
+        if (!LoveNuber.isEqual(loveNumber1, loveNumber2)) {console.log("LoveNumber.isEqual() failed. Expected true, got false.")}
+        loveNumber1 = LoveNumber.convertIntToLoveNumber(-2)
+        loveNumber2 = LoveNumber.convertIntToLoveNumber(-2)
+        if (!LoveNuber.isEqual(loveNumber1, loveNumber2)) {console.log("LoveNumber.isEqual() failed. Expected true, got false.")}
+        loveNumber1 = LoveNumber.convertIntToLoveNumber(-3)
+        loveNumber2 = LoveNumber.convertIntToLoveNumber(-3)
+        if (!LoveNuber.isEqual(loveNumber1, loveNumber2)) {console.log("LoveNumber.isEqual() failed. Expected true, got false.")}
+
+        loveNumber1 = LoveNumber.convertIntToLoveNumber(0)
+        loveNumber2 = LoveNumber.convertIntToLoveNumber(1)
+        if (LoveNuber.isEqual(loveNumber1, loveNumber2)) {console.log("LoveNumber.isEqual() failed. Expected false, got true.")}
+        loveNumber1 = LoveNumber.convertIntToLoveNumber(1)
+        loveNumber2 = LoveNumber.convertIntToLoveNumber(2)
+        if (LoveNuber.isEqual(loveNumber1, loveNumber2)) {console.log("LoveNumber.isEqual() failed. Expected false, got true.")}
+        loveNumber1 = LoveNumber.convertIntToLoveNumber(0)
+        loveNumber2 = LoveNumber.convertIntToLoveNumber(-1)
+        if (LoveNuber.isEqual(loveNumber1, loveNumber2)) {console.log("LoveNumber.isEqual() failed. Expected false, got true.")}
+        loveNumber1 = LoveNumber.convertIntToLoveNumber(-1)
+        loveNumber2 = LoveNumber.convertIntToLoveNumber(-2)
+        if (LoveNuber.isEqual(loveNumber1, loveNumber2)) {console.log("LoveNumber.isEqual() failed. Expected false, got true.")}
+        loveNumber1 = LoveNumber.convertIntToLoveNumber(1)
+        loveNumber2 = LoveNumber.convertIntToLoveNumber(-1)
+        if (LoveNuber.isEqual(loveNumber1, loveNumber2)) {console.log("LoveNumber.isEqual() failed. Expected false, got true.")}
     }
     function test_get_lowest_count(){
         let loveNumber = LoveNumber.convertIntToLoveNumber(0)
