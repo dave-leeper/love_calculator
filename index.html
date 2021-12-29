@@ -694,6 +694,13 @@
         expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[1] -1[1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[-1] 0[0] 0[0]"
         if (loveNumber.toDebugString(true) !== expected) {console.log(testText + " failed. Expected " + expected + ", got " + loveNumber.toDebugString(true) + ".")}
     }
+    function test_is_zero() {
+        let loveNumber = new LoveNumber()
+        if (!loveNumber.isZero()) {console.log("isZero() failed. Expected true, got false.")}
+        
+        loveNumber = LoveNumber.convertIntToLoveNumber(1)
+        if (loveNumber.isZero()) {console.log("isZero() failed. Expected false, got true.")}
+    }
     function test_is_equal() {
         let loveNumber1 = LoveNumber.convertIntToLoveNumber(0)
         let loveNumber2 = LoveNumber.convertIntToLoveNumber(0)
@@ -805,13 +812,6 @@
         expectedRemainder = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0]"
         result = testGetLowestCount(loveNumber, expectedNewNumber, expectedRemainder)
     }
-    function test_is_zero() {
-        let loveNumber = new LoveNumber()
-        if (!loveNumber.isZero()) {console.log("isZero() failed. Expected true, got false.")}
-        
-        loveNumber = LoveNumber.convertIntToLoveNumber(1)
-        if (loveNumber.isZero()) {console.log("isZero() failed. Expected false, got true.")}
-    }
     function test_get_number_array()
     {
         let testGetNumberArray = (loveNumber, expectedArray) => {
@@ -853,7 +853,9 @@
         testGetNumberArray(loveNumber, [loveNumberNegative3, loveNumberNegative1])
         loveNumber = LoveNumber.add(loveNumber3, loveNumberNegative1)
         testGetNumberArray(loveNumber, [LoveNumber.add(loveNumber3, loveNumberNegative1)])
-
+        
+        loveNumber = LoveNumber.add(loveNumberNegative1, loveNumber1)
+        testGetNumberArray(loveNumber, [LoveNumber.add(loveNumberNegative1, loveNumber1)])
     }
     function test_to_html(){
         let number1 = 1
