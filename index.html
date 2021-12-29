@@ -852,7 +852,7 @@
         loveNumber = LoveNumber.add(loveNumberNegative3, loveNumberNegative1)
         testGetNumberArray(loveNumber, [loveNumberNegative3, loveNumberNegative1])
         loveNumber = LoveNumber.add(loveNumber3, loveNumberNegative1)
-        testGetNumberArray(loveNumber, [loveNumber3, loveNumberNegative1])
+        testGetNumberArray(loveNumber, [LoveNumber.add(loveNumber3, loveNumberNegative1)])
 
     }
     function test_to_html(){
