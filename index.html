@@ -872,7 +872,7 @@
         let loveNumberNegative2 = LoveNumber.convertIntToLoveNumber(-2)
         let loveNumberNegative3 = LoveNumber.convertIntToLoveNumber(-3)
         let loveNumber = LoveNumber.add(loveNumber1, loveNumberNegative1)
-        let testMergeToZero = (loveNumber, expected) => {
+        let testMergeToZero = (number, expected) => {
             let result = LoveNumber.mergeToZero(number)
             let testText = "LoveNumber.mergeToZero()"
             if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result + ".")}
