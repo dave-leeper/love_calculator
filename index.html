@@ -150,8 +150,8 @@
 
             for (let loop = 0; loop < number.positiveFlags.length - 1; loop++) {
                 if ("1" === number.positiveFlags[loop] && "1" === number.negativeFlags[loop]) {
-                    loveNumber.positiveFlags[0] = "1"
-                    loveNumber.positiveCounts[0] = number.positiveCounts[loop] + number.negativeCounts[loop]
+                    loveNumber.positiveFlags[LoveNumber.FLAG_0] = "1"
+                    loveNumber.positiveCounts[LoveNumber.FLAG_0] = number.positiveCounts[loop] + number.negativeCounts[loop]
                 }
             }
             return loveNumber
