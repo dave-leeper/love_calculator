@@ -146,34 +146,15 @@
             return true
         }
         static mergeToZero(number) {
-            for (let loop = 0; loop < number1.positiveFlags.length - 1; loop++) {
-                if ("1" === number1.positiveFlags[loop] && "1" === number2.negativeFlags[loop]) {
-                    if (0 === number1.positiveCounts[loop] - number2.negativeCounts[loop]) {
-                        loveNumber.positiveFlags[number1.positiveFlags.length - 1] = "1"
-                        loveNumber.positiveCounts[number1.positiveFlags.length - 1] = loveNumber.positiveCounts[loop] + loveNumber.negativeCounts[loop]
-                        loveNumber.positiveFlags[loop] = "0"
-                        loveNumber.positiveCounts[loop] = 0
-                        loveNumber.negativeFlags[loop] = "0"
-                        loveNumber.negativeCounts[loop] = 0
-                    } else {
-                        if (number1.positiveCounts[loop] > number2.positiveCounts[loop]) {
-                            loveNumber.positiveFlags[number1.positiveFlags.length - 1] = "1"
-                            loveNumber.positiveCounts[number1.positiveFlags.length - 1] = number2.positiveCounts[loop]
-                            loveNumber.positiveFlags[loop] = "1"
-                            loveNumber.positiveCounts[loop] = number1.positiveCounts[loop] - number2.positiveCounts[loop]
-                            loveNumber.negativeFlags[loop] = "0"
-                            loveNumber.negativeCounts[loop] = 0
-                        } else {
-                            loveNumber.positiveFlags[number1.positiveFlags.length - 1] = "1"
-                            loveNumber.positiveCounts[number1.positiveFlags.length - 1] = number1.positiveCounts[loop]
-                            loveNumber.positiveFlags[loop] = "0"
-                            loveNumber.positiveCounts[loop] = 0
-                            loveNumber.negativeFlags[loop] = "1"
-                            loveNumber.negativeCounts[loop] = number2.positiveCounts[loop] - number1.positiveCounts[loop]
-                        }
-                    }
+            let loveNumber = new LoveNumber()
+
+            for (let loop = 0; loop < number.positiveFlags.length - 1; loop++) {
+                if ("1" === number.positiveFlags[loop] && "1" === number.negativeFlags[loop]) {
+                    loveNumber.positiveFlags[loop] = "1"
+                    loveNumber.positiveCounts[loop] = number.positiveCounts[loop] + number.negativeCounts[loop]
                 }
             }
+            return loveNumber
         }
         constructor() {
             this.positiveFlags = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
