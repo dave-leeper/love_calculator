@@ -146,36 +146,34 @@
             return true
         }
         static mergeToZero(number) {
-        /*
-        for (let loop = 0; loop < number1.positiveFlags.length - 1; loop++) {
-        if ("1" === number1.positiveFlags[loop] && "1" === number2.negativeFlags[loop]) {
-        if (0 === number1.positiveCounts[loop] - number2.negativeCounts[loop]) {
-            loveNumber.positiveFlags[number1.positiveFlags.length - 1] = "1"
-            loveNumber.positiveCounts[number1.positiveFlags.length - 1] = loveNumber.positiveCounts[loop] + loveNumber.negativeCounts[loop]
-            loveNumber.positiveFlags[loop] = "0"
-            loveNumber.positiveCounts[loop] = 0
-            loveNumber.negativeFlags[loop] = "0"
-            loveNumber.negativeCounts[loop] = 0
-        } else {
-            if (number1.positiveCounts[loop] > number2.positiveCounts[loop]) {
-                loveNumber.positiveFlags[number1.positiveFlags.length - 1] = "1"
-                loveNumber.positiveCounts[number1.positiveFlags.length - 1] = number2.positiveCounts[loop]
-                loveNumber.positiveFlags[loop] = "1"
-                loveNumber.positiveCounts[loop] = number1.positiveCounts[loop] - number2.positiveCounts[loop]
-                loveNumber.negativeFlags[loop] = "0"
-                loveNumber.negativeCounts[loop] = 0
-            } else {
-                loveNumber.positiveFlags[number1.positiveFlags.length - 1] = "1"
-                loveNumber.positiveCounts[number1.positiveFlags.length - 1] = number1.positiveCounts[loop]
-                loveNumber.positiveFlags[loop] = "0"
-                loveNumber.positiveCounts[loop] = 0
-                loveNumber.negativeFlags[loop] = "1"
-                loveNumber.negativeCounts[loop] = number2.positiveCounts[loop] - number1.positiveCounts[loop]
+            for (let loop = 0; loop < number1.positiveFlags.length - 1; loop++) {
+                if ("1" === number1.positiveFlags[loop] && "1" === number2.negativeFlags[loop]) {
+                    if (0 === number1.positiveCounts[loop] - number2.negativeCounts[loop]) {
+                        loveNumber.positiveFlags[number1.positiveFlags.length - 1] = "1"
+                        loveNumber.positiveCounts[number1.positiveFlags.length - 1] = loveNumber.positiveCounts[loop] + loveNumber.negativeCounts[loop]
+                        loveNumber.positiveFlags[loop] = "0"
+                        loveNumber.positiveCounts[loop] = 0
+                        loveNumber.negativeFlags[loop] = "0"
+                        loveNumber.negativeCounts[loop] = 0
+                    } else {
+                        if (number1.positiveCounts[loop] > number2.positiveCounts[loop]) {
+                            loveNumber.positiveFlags[number1.positiveFlags.length - 1] = "1"
+                            loveNumber.positiveCounts[number1.positiveFlags.length - 1] = number2.positiveCounts[loop]
+                            loveNumber.positiveFlags[loop] = "1"
+                            loveNumber.positiveCounts[loop] = number1.positiveCounts[loop] - number2.positiveCounts[loop]
+                            loveNumber.negativeFlags[loop] = "0"
+                            loveNumber.negativeCounts[loop] = 0
+                        } else {
+                            loveNumber.positiveFlags[number1.positiveFlags.length - 1] = "1"
+                            loveNumber.positiveCounts[number1.positiveFlags.length - 1] = number1.positiveCounts[loop]
+                            loveNumber.positiveFlags[loop] = "0"
+                            loveNumber.positiveCounts[loop] = 0
+                            loveNumber.negativeFlags[loop] = "1"
+                            loveNumber.negativeCounts[loop] = number2.positiveCounts[loop] - number1.positiveCounts[loop]
+                        }
+                    }
+                }
             }
-        }
-        }
-        }
-        */
         }
         constructor() {
             this.positiveFlags = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
@@ -333,7 +331,7 @@
             }
             return { newNumber, remainder }
         }
-       getNumberArray() {
+        getNumberArray() {
             if (LoveNumber.isZero(this)) { return [this] }
             
             let finalResult = []
@@ -363,6 +361,7 @@
         test_get_lowest_count()
         test_get_number_based_on_lowest_counts()
         test_get_number_array()
+        test_merge_to_zero()
         test_to_html()
     }
 
@@ -863,6 +862,25 @@
 
         loveNumber = LoveNumber.add( LoveNumber.add(loveNumber3, loveNumber3), loveNumber1)
         testGetNumberArray(loveNumber, [LoveNumber.add(loveNumber3, loveNumber3), loveNumber1])
+    }
+    function test_merge_to_zero(){
+        let loveNumber0 = LoveNumber.convertIntToLoveNumber(0)
+        let loveNumber1 = LoveNumber.convertIntToLoveNumber(1)
+        let loveNumber2 = LoveNumber.convertIntToLoveNumber(2)
+        let loveNumber3 = LoveNumber.convertIntToLoveNumber(3)
+        let loveNumberNegative1 = LoveNumber.convertIntToLoveNumber(-1)
+        let loveNumberNegative2 = LoveNumber.convertIntToLoveNumber(-2)
+        let loveNumberNegative3 = LoveNumber.convertIntToLoveNumber(-3)
+        let loveNumber = LoveNumber.add(loveNumber1, loveNumberNegative1)
+        let testMergeToZero = (loveNumber, expected) => {
+            let result = LoveNumber.mergeToZero(number)
+            let testText = "LoveNumber.mergeToZero()"
+            if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result + ".")}
+            return result
+        }
+        let expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[0]"
+
+        testMergeToZero(loveNumber, expected)
     }
     function test_to_html(){
         let number1 = 1
