@@ -856,7 +856,7 @@
         let testMergeToZero = (number, expected) => {
             let result = LoveNumber.mergeToZero(number)
             let testText = "LoveNumber.mergeToZero()"
-            if (expected !== result.toDebugString(true)) {console.log(testText + " failed. Expected " + expected + ", got " + result + ".")}
+            if (expected !== result.toDebugString(true)) {console.log(testText + " failed. Expected " + expected + ", got " + result.toDebugString(true) + ".")}
             return result
         }
         let expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[0]"
