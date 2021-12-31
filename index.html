@@ -147,14 +147,16 @@
         }
         static mergeToZero(number) {
             let loveNumber = new LoveNumber()
+            let merged = false
 
             for (let loop = 0; loop < number.positiveFlags.length - 1; loop++) {
                 if ("1" === number.positiveFlags[loop] && "1" === number.negativeFlags[loop]) {
+                    merged = true
                     loveNumber.positiveFlags[LoveNumber.FLAG_0] = "1"
                     loveNumber.positiveCounts[LoveNumber.FLAG_0] = number.positiveCounts[loop] + number.negativeCounts[loop]
                 }
             }
-            return loveNumber
+            return ((merged)? loveNumber : LoveNumber.deepClone(number))
         }
         constructor() {
             this.positiveFlags = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
@@ -861,6 +863,9 @@
         }
         let expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[2]"
 
+        testMergeToZero(loveNumber, expected)
+        loveNumber = LoveNumber.add(LoveNumber.subtract(loveNumberZero, loveNumber1), loveNumberNegative1)
+        expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[0]"
         testMergeToZero(loveNumber, expected)
     }
     function test_to_html(){
