@@ -893,8 +893,8 @@
         let testMergeToZero = (number, expected, expectedRemainder) => {
             let result = LoveNumber.mergeToZero(number)
             let testText = "LoveNumber.mergeToZero()"
-            if (expected !== result.newNumber.toDebugString(true)) {console.log(testText + " failed. Expected " + expected + ", got " + result.newNumber.toDebugString(true) + ".")}
-            if (expectedRemainder !== result.remainder.toDebugString(true)) {console.log(testText + " failed. Expected " + expected + ", got " + result.remainder.toDebugString(true) + ".")}
+            if (expected !== result.newNumber.toDebugString(true)) {console.log(testText + " expected failed. Expected " + expected + ", got " + result.newNumber.toDebugString(true) + ".")}
+            if (expectedRemainder !== result.remainder.toDebugString(true)) {console.log(testText + " expectedRemainder failed. Expected " + expected + ", got " + result.remainder.toDebugString(true) + ".")}
             return result
         }
         let expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[2]"
