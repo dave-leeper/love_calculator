@@ -153,12 +153,12 @@
             for (let loop = 0; loop < number.positiveFlags.length - 1; loop++) {
                 if ("1" === number.positiveFlags[loop] && "1" === number.negativeFlags[loop]) {
                     mergedFlag = true
-                    if (number.positiveCounts[loop] === number.negatibveCounts[loop]
-                    || number.positiveCounts[loop] === number.negatibveCounts[loop] * -1) {
+                    if (number.positiveCounts[loop] === number.negativeCounts[loop]
+                    || number.positiveCounts[loop] === number.negativeCounts[loop] * -1) {
                         loveNumber.positiveFlags[LoveNumber.FLAG_0] = "1"
                         loveNumber.positiveCounts[LoveNumber.FLAG_0] = number.positiveCounts[loop] + number.negativeCounts[loop]
                     } else {
-                        if (Math.abs(loveNumber.positiveCounts[loop]) > Math.abs(loveNumber.negatibveCounts[loop])) {
+                        if (Math.abs(loveNumber.positiveCounts[loop]) > Math.abs(loveNumber.negativeCounts[loop])) {
                             // TODO
                         }
                     }
