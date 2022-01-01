@@ -165,9 +165,9 @@
                 }
             }
             if (mergedFlag) {
-                return { merged: loveNumber, remainder }
+                return { newNumber: loveNumber, remainder }
             } else {
-                return { merged: loveNumber, remainder: number }
+                return { newNumber: new LoveNumber(), remainder: number }
             }
         }
         constructor() {
@@ -870,7 +870,7 @@
         let testMergeToZero = (number, expected, expectedRemainder) => {
             let result = LoveNumber.mergeToZero(number)
             let testText = "LoveNumber.mergeToZero()"
-            if (expected !== result.merged.toDebugString(true)) {console.log(testText + " failed. Expected " + expected + ", got " + result.merged.toDebugString(true) + ".")}
+            if (expected !== result.newNumber.toDebugString(true)) {console.log(testText + " failed. Expected " + expected + ", got " + result.newNumber.toDebugString(true) + ".")}
             if (expectedRemainder !== result.remainder.toDebugString(true)) {console.log(testText + " failed. Expected " + expected + ", got " + result.remainder.toDebugString(true) + ".")}
             return result
         }
