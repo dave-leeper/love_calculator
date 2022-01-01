@@ -146,26 +146,49 @@
             return true
         }
         static mergeToZero(number) {
-            let loveNumber = new LoveNumber()
+            let newNumber = new LoveNumber()
             let remainder = new LoveNumber()
             let mergedFlag = false
 
             for (let loop = 0; loop < number.positiveFlags.length - 1; loop++) {
-                if ("1" === number.positiveFlags[loop] && "1" === number.negativeFlags[loop]) {
-                    mergedFlag = true
-                    if (number.positiveCounts[loop] === number.negativeCounts[loop]
-                    || number.positiveCounts[loop] === number.negativeCounts[loop] * -1) {
-                        loveNumber.positiveFlags[LoveNumber.FLAG_0] = "1"
-                        loveNumber.positiveCounts[LoveNumber.FLAG_0] = number.positiveCounts[loop] + number.negativeCounts[loop]
+                if ("1" !== number.positiveFlags[loop] || "1" !== number.negativeFlags[loop]) { continue }
+                mergedFlag = true
+                newNumber.positiveFlags[LoveNumber.FLAG_0] = "1"
+                if (number.positiveCounts[loop] === number.negativeCounts[loop] || number.positiveCounts[loop] === number.negativeCounts[loop] * -1) {
+                    newNumber.positiveCounts[LoveNumber.FLAG_0] = number.positiveCounts[loop] + number.negativeCounts[loop]
+                } else {
+                    let postiveCountIsNegative = (0 > number.positiveCounts[loop])
+                    let negativeCountIsNegative = (0 > number.negativeCounts[loop])
+                    let absoluteSmallestIsPostiveCount = (Math.abs(number.positiveCounts[loop]) < Math.abs(number.negativeCounts[loop]))
+                    let absoluteSmallestCount = ((absoluteSmallestIsPostiveCount)? Math.abs(number.positiveCounts[loop]) : Math.abs(number.negativeCounts[loop]))
+                    let absoluteLargestCount = ((absoluteSmallestIsPostiveCount)? Math.abs(number.negativeCounts[loop]) : Math.abs(number.positiveCounts[loop]))
+                    let smallestCountIsNegative = ((absoluteSmallestIsPostiveCount)? postiveCountIsNegative : negativeCountIsNegative)
+                    let largestCountIsNegative = ((absoluteSmallestIsPostiveCount)? negativeCountIsNegative : postiveCountIsNegative)
+                    let smallestCount = ((smallestCountIsNegative)? absoluteSmallestCount * -1 : absoluteSmallestCount)
+                    let largestCount = ((largestCountIsNegative)? absoluteLargestCount * -1 : absoluteLargestCount)
+
+                    console.log("postiveCountIsNegative: " + postiveCountIsNegative)
+                    console.log("negativeCountIsNegative: " + negativeCountIsNegative)
+                    console.log("absoluteSmallestIsPostiveCount: " + absoluteSmallestIsPostiveCount)
+                    console.log("absoluteSmallestCount: " + absoluteSmallestCount)
+                    console.log("absoluteLargestCount: " + absoluteLargestCount)
+                    console.log("smallestCountIsNegative: " + smallestCountIsNegative)
+                    console.log("largestCountIsNegative: " + largestCountIsNegative)
+                    console.log("smallestCount: " + smallestCount)
+                    console.log("largestCount: " + largestCount)
+                    
+                    newNumber.positiveCounts[LoveNumber.FLAG_0] = ((smallestCountIsNegative === largestCountIsNegative)? (smallestCount * 2) : 0)
+                    if (absoluteSmallestIsPostiveCount) {
+                        remainder.negativeFlags[loop] = "1"
+                        remainder.negativeCounts[loop] = number.negativeCounts[loop] - number.positiveCounts[loop]
                     } else {
-                        if (Math.abs(loveNumber.positiveCounts[loop]) > Math.abs(loveNumber.negativeCounts[loop])) {
-                            // TODO
-                        }
+                        remainder.positiveFlags[loop] = "1"
+                        remainder.positiveCounts[loop] = number.positiveCounts[loop] - number.negativeCounts[loop]
                     }
                 }
             }
             if (mergedFlag) {
-                return { newNumber: loveNumber, remainder }
+                return { newNumber, remainder }
             } else {
                 return { newNumber: new LoveNumber(), remainder: number }
             }
@@ -901,6 +924,12 @@
         testMergeToZero(loveNumberNegative2, expected, expectedRemainder)
         expectedRemainder = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[1] -1[1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0]"
         testMergeToZero(loveNumberNegative3, expected, expectedRemainder)
+
+        loveNumber = LoveNumber.add(loveNumberNegative1, LoveNumber.add(loveNumber3, loveNumber1))
+        expected = new LoveNumber().toDebugString(true)
+        expectedRemainder = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1]"
+        testMergeToZero(loveNumber, expected, expectedRemainder)
+
     }
     function test_to_html(){
         let number1 = 1
