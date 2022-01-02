@@ -211,12 +211,12 @@
             let negativeCount = 0
 
             for (let loop = 0; loop < number.positiveFlags.length - 1; loop++) {
-                if ("0" === number.positiveFlags[loop]) { contiue }
+                if ("0" === number.positiveFlags[loop]) { continue }
                 positiveNumber += LoveNumber.VALUES[loop]
                 postiveCount += number.positiveCounts[loop]
             }
             for (let loop = 0; loop < number.negativeFlags.length - 1; loop++) {
-                if ("0" === number.negativeFlags[loop]) { contiue }
+                if ("0" === number.negativeFlags[loop]) { continue }
                 negativeNumber += (LoveNumber.VALUES[loop] * -1)
                 negativeCount += number.negativeCounts[loop]
             }
