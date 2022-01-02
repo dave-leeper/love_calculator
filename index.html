@@ -195,14 +195,14 @@
                     console.log("postiveCountIncrement: " + postiveCountIncrement)
                     console.log("negativeCountIncrement: " + negativeCountIncrement)
                     
-                    newNumber.positiveCounts[LoveNumber.FLAG_0] = ((smallestCountIsNegative === largestCountIsNegative)? (smallestCount * 2) : 0)
+                    newNumber.positiveCounts[LoveNumber.FLAG_0] = postiveCountIncrement + negativeCountIncrement
+                    remainder.positiveCounts[loop] = number.positiveCounts[loop] - postiveCountIncrement
+                    remainder.negativeCounts[loop] = number.negativeCounts[loop] - negativeCountIncrement
                     if (absoluteSmallestIsPostiveCount) {
                         remainder.negativeFlags[loop] = "1"
-                        remainder.negativeCounts[loop] = postiveCountIncrement + negativeCountIncrement
                     } else {
                         remainder.positiveFlags[loop] = "1"
-                        remainder.positiveCounts[loop] = postiveCountIncrement + negativeCountIncrement
-                    }
+                   }
                 }
             }
             if (mergedFlag) {
