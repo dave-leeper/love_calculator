@@ -402,6 +402,10 @@
         let loveNumberNegative1 = LoveNumber.convertIntToLoveNumber(-1)
         let loveNumberNegative2 = LoveNumber.convertIntToLoveNumber(-2)
         let loveNumberNegative3 = LoveNumber.convertIntToLoveNumber(-3)
+        let loveNumber1NegativeCount = LoveNumber.convertIntToLoveNumber(1, -1)
+        let loveNumber3NegativeCount = LoveNumber.convertIntToLoveNumber(3, -1)
+        let loveNumberNegative1NegativeCount = LoveNumber.convertIntToLoveNumber(-1, -1)
+        let loveNumberNegative3NegativeCount = LoveNumber.convertIntToLoveNumber(-3, -1)
 
         let expected0False = "-00000000000000000000000000000000+00000000000000000000000000000001"
         let expected1False = "-00000000000000000000000000000000+00000000000000000000000000000010"
@@ -410,7 +414,11 @@
         let expectedNegative1False = "-00000000000000000000000000000010+00000000000000000000000000000000"
         let expectedNegative2False = "-00000000000000000000000000000100+00000000000000000000000000000000"
         let expectedNegative3False = "-00000000000000000000000000000110+00000000000000000000000000000000"
-        
+        let expected1NegativeCount = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[-1] 0[0]"
+        let expected3NegativeCount = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[-1] 1[-1] 0[0]"
+        let expectedNegative1NegativeCount = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[-1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0]"
+        let expectedNegative3NegativeCount = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[-1] -1[-1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0]"
+
         let testConvertIntToLoveNumber = (loveNumber, expected, includeSubscripts) => {
             let result = loveNumber.toDebugString(includeSubscripts)
             let testText = "loveNumber.toDebugString(" + includeSubscripts + ")"
@@ -424,6 +432,10 @@
         testConvertIntToLoveNumber(loveNumberNegative1, expectedNegative1False, false)
         testConvertIntToLoveNumber(loveNumberNegative2, expectedNegative2False, false)
         testConvertIntToLoveNumber(loveNumberNegative3, expectedNegative3False, false)
+        testConvertIntToLoveNumber(loveNumber1NegativeCount, expected1NegativeCount, true)
+        testConvertIntToLoveNumber(loveNumber3NegativeCount, expected3NegativeCount, true)
+        testConvertIntToLoveNumber(loveNumberNegative1NegativeCount, expectedNegative1NegativeCount, true)
+        testConvertIntToLoveNumber(loveNumberNegative3NegativeCount, expectedNegative3NegativeCount, true)
     }
     function test_to_debug_string(){
         let loveNumber0 = LoveNumber.convertIntToLoveNumber(0)
