@@ -178,6 +178,7 @@
                     let smallestCount = ((smallestCountIsNegative)? absoluteSmallestCount * -1 : absoluteSmallestCount)
                     let largestCount = ((largestCountIsNegative)? absoluteLargestCount * -1 : absoluteLargestCount)
 
+                    /*
                     console.log("postiveCountIsNegative: " + postiveCountIsNegative)
                     console.log("negativeCountIsNegative: " + negativeCountIsNegative)
                     console.log("absoluteSmallestIsPostiveCount: " + absoluteSmallestIsPostiveCount)
@@ -187,6 +188,7 @@
                     console.log("largestCountIsNegative: " + largestCountIsNegative)
                     console.log("smallestCount: " + smallestCount)
                     console.log("largestCount: " + largestCount)
+                    */
                     
                     newNumber.positiveCounts[LoveNumber.FLAG_0] = ((smallestCountIsNegative === largestCountIsNegative)? (smallestCount * 2) : 0)
                     if (absoluteSmallestIsPostiveCount) {
