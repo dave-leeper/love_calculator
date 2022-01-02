@@ -180,6 +180,7 @@
                     if (postiveCountIsNegative !== smallestCountIsNegative) { postiveCountIncrement *= -1 }
                     if (negativeCountIsNegative !== smallestCountIsNegative) { negativeCountIncrement *= -1 }
 
+                    /*
                     console.log("postiveCountIsNegative: " + postiveCountIsNegative)
                     console.log("negativeCountIsNegative: " + negativeCountIsNegative)
                     console.log("absoluteSmallestIsPostiveCount: " + absoluteSmallestIsPostiveCount)
@@ -188,6 +189,7 @@
                     console.log("smallestCount: " + smallestCount)
                     console.log("postiveCountIncrement: " + postiveCountIncrement)
                     console.log("negativeCountIncrement: " + negativeCountIncrement)
+                    */
                     
                     newNumber.positiveCounts[LoveNumber.FLAG_0] = postiveCountIncrement + negativeCountIncrement
                     remainder.positiveCounts[loop] = number.positiveCounts[loop] - postiveCountIncrement
@@ -959,7 +961,6 @@
         expectedRemainder = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[1] -1[1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0]"
         testMergeToZero(loveNumber, expected, expectedRemainder)
 
-        console.log("---------------------------------------------")
         loveNumber = LoveNumber.add(loveNumberNegative1NegativeCount, LoveNumber.add(loveNumber3, loveNumber1))
         expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[0]"
         expectedRemainder = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 1[1] 0[0]"
