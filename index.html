@@ -172,11 +172,8 @@
                     let negativeCountIsNegative = (0 > number.negativeCounts[loop])
                     let absoluteSmallestIsPostiveCount = (Math.abs(number.positiveCounts[loop]) < Math.abs(number.negativeCounts[loop]))
                     let absoluteSmallestCount = ((absoluteSmallestIsPostiveCount)? Math.abs(number.positiveCounts[loop]) : Math.abs(number.negativeCounts[loop]))
-                    let absoluteLargestCount = ((absoluteSmallestIsPostiveCount)? Math.abs(number.negativeCounts[loop]) : Math.abs(number.positiveCounts[loop]))
                     let smallestCountIsNegative = ((absoluteSmallestIsPostiveCount)? postiveCountIsNegative : negativeCountIsNegative)
-                    let largestCountIsNegative = ((absoluteSmallestIsPostiveCount)? negativeCountIsNegative : postiveCountIsNegative)
                     let smallestCount = ((smallestCountIsNegative)? absoluteSmallestCount * -1 : absoluteSmallestCount)
-                    let largestCount = ((largestCountIsNegative)? absoluteLargestCount * -1 : absoluteLargestCount)
                     let postiveCountIncrement = smallestCount
                     let negativeCountIncrement = smallestCount
 
@@ -187,11 +184,8 @@
                     console.log("negativeCountIsNegative: " + negativeCountIsNegative)
                     console.log("absoluteSmallestIsPostiveCount: " + absoluteSmallestIsPostiveCount)
                     console.log("absoluteSmallestCount: " + absoluteSmallestCount)
-                    console.log("absoluteLargestCount: " + absoluteLargestCount)
                     console.log("smallestCountIsNegative: " + smallestCountIsNegative)
-                    console.log("largestCountIsNegative: " + largestCountIsNegative)
                     console.log("smallestCount: " + smallestCount)
-                    console.log("largestCount: " + largestCount)
                     console.log("postiveCountIncrement: " + postiveCountIncrement)
                     console.log("negativeCountIncrement: " + negativeCountIncrement)
                     
