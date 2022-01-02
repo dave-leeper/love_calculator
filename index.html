@@ -198,11 +198,8 @@
                     newNumber.positiveCounts[LoveNumber.FLAG_0] = postiveCountIncrement + negativeCountIncrement
                     remainder.positiveCounts[loop] = number.positiveCounts[loop] - postiveCountIncrement
                     remainder.negativeCounts[loop] = number.negativeCounts[loop] - negativeCountIncrement
-                    if (absoluteSmallestIsPostiveCount) {
-                        remainder.negativeFlags[loop] = "1"
-                    } else {
-                        remainder.positiveFlags[loop] = "1"
-                   }
+                    if (0 !== remainder.positiveCounts[loop]) { remainder.positiveFlags[loop] = "1" } else { remainder.positiveFlags[loop] = "0" }
+                    if (0 !== remainder.negativeCounts[loop]) { remainder.negativeFlags[loop] = "1" } else { remainder.negativeFlags[loop] = "0" }
                 }
             }
             if (mergedFlag) {
