@@ -204,6 +204,24 @@
                 return { newNumber: new LoveNumber(), remainder: number }
             }
         }
+        static buildNumberPresentation(number) {
+            let positiveNumber = 0
+            let postiveCount = 0
+            let negativeNumber = 0
+            let negativeCount = 0
+
+            for (let loop = 0; loop < number.positiveFlags.length - 1; loop++) {
+                if ("0" === number.positiveFlags[loop]) { contiue }
+                positiveNumber += LoveNumber.VALUES[loop]
+                postiveCount += number.positiveCounts[loop]
+            }
+            for (let loop = 0; loop < number.negativeFlags.length - 1; loop++) {
+                if ("0" === number.negativeFlags[loop]) { contiue }
+                negativeNumber += (LoveNumber.VALUES[loop] * -1)
+                negativeCount += number.negativeCounts[loop]
+            }
+            return { positiveNumber, postiveCount, negativeNumber, negativeCount }
+        }
         constructor() {
             this.positiveFlags = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
             this.positiveCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
