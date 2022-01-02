@@ -409,6 +409,7 @@
         test_get_number_based_on_lowest_counts()
         test_get_number_array()
         test_merge_to_zero()
+        test_build_number_presentation()
         test_to_html()
     }
 
@@ -987,6 +988,30 @@
         expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[0]"
         expectedRemainder = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[1] -1[1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0]"
         testMergeToZero(loveNumber, expected, expectedRemainder)
+    }
+    function  test_build_number_presentation() {
+        let loveNumber0 = LoveNumber.convertIntToLoveNumber(0)
+        let loveNumber1 = LoveNumber.convertIntToLoveNumber(1)
+        let loveNumber2 = LoveNumber.convertIntToLoveNumber(2)
+        let loveNumber3 = LoveNumber.convertIntToLoveNumber(3)
+        let loveNumberNegative1 = LoveNumber.convertIntToLoveNumber(-1)
+        let loveNumberNegative2 = LoveNumber.convertIntToLoveNumber(-2)
+        let loveNumberNegative3 = LoveNumber.convertIntToLoveNumber(-3)
+        let loveNumber1NegativeCount = LoveNumber.convertIntToLoveNumber(1, -1)
+        let loveNumber3NegativeCount = LoveNumber.convertIntToLoveNumber(3, -1)
+        let loveNumberNegative1NegativeCount = LoveNumber.convertIntToLoveNumber(-1, -1)
+        let loveNumberNegative3NegativeCount = LoveNumber.convertIntToLoveNumber(-3, -1)
+        let testBuildNumberPresentation = (number, expectedPostiveNumber, expectedPostiveCount, expectedNegativeNumber, expectedNegativeCount) => {
+            let result = LoveNumber.buildNumberPresentation(number)
+            let testText = "LoveNumber.buildNumberPresentation()"
+            if (expectedPostiveNumber !== result.positiveNumber) {console.log(testText + " positiveNumber failed. Expected " + expectedPostiveNumber + ", got " + result.positiveNumber + ".")}
+            if (expectedPostiveCount !== result.postiveCount) {console.log(testText + " positiveNumber failed. Expected " + expectedPostiveCount + ", got " + result.postiveCount + ".")}
+            if (expectedNegativeNumber !== result.negativeNumber) {console.log(testText + " positiveNumber failed. Expected " + expectedNegativeNumber + ", got " + result.negativeNumber + ".")}
+            if (expectedNegativeCount !== result.negativeCount) {console.log(testText + " positiveNumber failed. Expected " + expectedNegativeCount + ", got " + result.negativeCount + ".")}
+            return result
+        }
+
+        testBuildNumberPresentation(loveNumber0, 0, 1, 0, 0)
     }
     function test_to_html(){
         let number1 = 1
