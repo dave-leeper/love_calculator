@@ -899,6 +899,10 @@
         let loveNumberNegative1 = LoveNumber.convertIntToLoveNumber(-1)
         let loveNumberNegative2 = LoveNumber.convertIntToLoveNumber(-2)
         let loveNumberNegative3 = LoveNumber.convertIntToLoveNumber(-3)
+        let loveNumber1NegativeCount = LoveNumber.subtract(loveNumber0, loveNumber1)
+        let loveNumber3NegativeCount = LoveNumber.subtract(loveNumber0, loveNumber3)
+        let loveNumberNegative1NegativeCount = LoveNumber.subtract(loveNumber0, loveNumberNegative1)
+        let loveNumberNegative3NegativeCount = LoveNumber.subtract(loveNumber0, loveNumberNegative3)
         let loveNumber = LoveNumber.add(loveNumber1, loveNumberNegative1)
         let testMergeToZero = (number, expected, expectedRemainder) => {
             let result = LoveNumber.mergeToZero(number)
@@ -909,6 +913,11 @@
         }
         let expected = "-0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[2]"
         let expectedRemainder = new LoveNumber().toDebugString(true)
+
+        console.log("loveNumber1NegativeCount: " + loveNumber1NegativeCount.toDebugString(true))
+        console.log("loveNumber3NegativeCount: " + loveNumber3NegativeCount.toDebugString(true))
+        console.log("loveNumberNegative1NegativeCount: " + loveNumberNegative1NegativeCount.toDebugString(true))
+        console.log("loveNumberNegative3NegativeCount: " + loveNumberNegative3NegativeCount.toDebugString(true))
 
         testMergeToZero(loveNumber, expected, expectedRemainder)
         loveNumber = LoveNumber.add(loveNumberNegative1, loveNumber1)
