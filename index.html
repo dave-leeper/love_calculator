@@ -393,7 +393,7 @@
                 remainder = result.remainder
                 intermediateResult.push(newNumber)
             } while (!LoveNumber.isZero(remainder))
-            
+
             let finalResult = []
 
             for (let loop = 0; loop < intermediateResult.length; loop++) {
@@ -402,9 +402,11 @@
                 do {
                     let mergeTooZeroResult = LoveNumber.mergeToZero(mergeToZeroNumber)
 
-                    finalResult.push(mergeTooZeroResult.newNumber)
-                    mergeToZeroNumber = mergeTooZeroResult.remainder
-                } while (!LoveNumber.isZero(mergeTooZeroResult.remainder))
+                    newNumber = mergeTooZeroResult.newNumber
+                    remainder = mergeTooZeroResult.remainder
+                    finalResult.push(newNumber)
+                    mergeToZeroNumber = remainder
+                } while (!LoveNumber.isZero(remainder))
             }
             return finalResult
        }
