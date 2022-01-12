@@ -381,7 +381,7 @@
         getNumberArray() {
             if (LoveNumber.isZero(this)) { return [this] }
             
-            let finalResult = []
+            let intermediateResult = []
             let newNumber = null
             let remainder = this
 
@@ -391,8 +391,21 @@
                 
                 newNumber = result.newNumber
                 remainder = result.remainder
-                finalResult.push(newNumber)
+                intermediateResult.push(newNumber)
             } while (!LoveNumber.isZero(remainder))
+            
+            let finalResult = []
+
+            for (let loop = 0; loop < intermediateResult.length; loop++) {
+                let mergeToZeroNumber = intermediateResult[loop]
+
+                do {
+                    let mergeTooZeroResult = LoveNumber.mergeToZero(mergeToZeroNumber)
+
+                    finalResult.push(mergeTooZeroResult.newNumber)
+                    mergeToZeroNumber = mergeTooZeroResult.remainder
+                } while (!LoveNumber.isZero(mergeTooZeroResult.remainder))
+            }
             return finalResult
        }
     }
