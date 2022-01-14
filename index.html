@@ -385,7 +385,7 @@
             let newNumber = null
             let remainder = this
 
-            
+
             do {
                 let lowestCount = remainder.getLowestCount()
                 let result = remainder.getNumberBasedOnLowestCounts(lowestCount)
@@ -405,9 +405,10 @@
 
                     newNumber = mergeTooZeroResult.newNumber
                     remainder = mergeTooZeroResult.remainder
-                    finalResult.push(newNumber)
+                    if (!LoveNumber.isZero(newNumber)) { finalResult.push(newNumber) }
+                    else {finalResult.push(remainder) }
                     mergeToZeroNumber = remainder
-                } while (!LoveNumber.isZero(remainder))
+                } while (!LoveNumber.isZero(newNumber))
             }
             return finalResult
        }
