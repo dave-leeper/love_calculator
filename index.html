@@ -898,6 +898,11 @@
         let loveNumberNegative1 = LoveNumber.convertIntToLoveNumber(-1)
         let loveNumberNegative2 = LoveNumber.convertIntToLoveNumber(-2)
         let loveNumberNegative3 = LoveNumber.convertIntToLoveNumber(-3)
+        let loveNumber1NegativeCount = LoveNumber.convertIntToLoveNumber(1, -1)
+        let loveNumber3NegativeCount = LoveNumber.convertIntToLoveNumber(3, -1)
+        let loveNumberNegative1NegativeCount = LoveNumber.convertIntToLoveNumber(-1, -1)
+        let loveNumberNegative3NegativeCount = LoveNumber.convertIntToLoveNumber(-3, -1)
+        let loveNumber = LoveNumber.add(loveNumber1, loveNumberNegative1)
         let loveNumber = LoveNumber.deepClone(loveNumber0)
 
         testGetNumberArray(loveNumber, [loveNumber])
@@ -928,6 +933,10 @@
 
         loveNumber = LoveNumber.add( LoveNumber.add(loveNumber3, loveNumber3), loveNumber1)
         testGetNumberArray(loveNumber, [LoveNumber.add(loveNumber3, loveNumber3), loveNumber1])
+
+        loveNumber = LoveNumber.add(loveNumber1, loveNumberNegative1)
+        testGetNumberArray(loveNumber, [LoveNumber.add(loveNumber0, loveNumber0)])
+
     }
     function test_merge_to_zero(){
         let loveNumber0 = LoveNumber.convertIntToLoveNumber(0)
