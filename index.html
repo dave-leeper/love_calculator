@@ -179,17 +179,6 @@
 
                     if (postiveCountIsNegative !== smallestCountIsNegative) { postiveCountIncrement *= -1 }
                     if (negativeCountIsNegative !== smallestCountIsNegative) { negativeCountIncrement *= -1 }
-
-                    /*
-                    console.log("postiveCountIsNegative: " + postiveCountIsNegative)
-                    console.log("negativeCountIsNegative: " + negativeCountIsNegative)
-                    console.log("absoluteSmallestIsPostiveCount: " + absoluteSmallestIsPostiveCount)
-                    console.log("absoluteSmallestCount: " + absoluteSmallestCount)
-                    console.log("smallestCountIsNegative: " + smallestCountIsNegative)
-                    console.log("smallestCount: " + smallestCount)
-                    console.log("postiveCountIncrement: " + postiveCountIncrement)
-                    console.log("negativeCountIncrement: " + negativeCountIncrement)
-                    */
                     
                     newNumber.positiveCounts[LoveNumber.FLAG_0] = postiveCountIncrement + negativeCountIncrement
                     remainder.positiveCounts[loop] = number.positiveCounts[loop] - postiveCountIncrement
@@ -401,10 +390,10 @@
                 let mergeToZeroNumber = intermediateResult[loop]
 
                 do {
-                    let mergeTooZeroResult = LoveNumber.mergeToZero(mergeToZeroNumber)
+                    let mergeToZeroResult = LoveNumber.mergeToZero(mergeToZeroNumber)
 
-                    newNumber = mergeTooZeroResult.newNumber
-                    remainder = mergeTooZeroResult.remainder
+                    newNumber = mergeToZeroResult.newNumber
+                    remainder = mergeToZeroResult.remainder
                     if (!LoveNumber.isZero(newNumber)) { finalResult.push(newNumber) }
                     else {finalResult.push(remainder) }
                     mergeToZeroNumber = remainder
