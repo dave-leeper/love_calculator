@@ -925,18 +925,24 @@
         loveNumber = LoveNumber.deepClone(loveNumberNegative3)
         testGetNumberArray(loveNumber, [loveNumber])    
 
+        console.log("3.1")
         loveNumber = LoveNumber.add(loveNumber3, loveNumber1)
         testGetNumberArray(loveNumber, [loveNumber3, loveNumber1])
+        console.log("-3.-1")
         loveNumber = LoveNumber.add(loveNumberNegative3, loveNumberNegative1)
         testGetNumberArray(loveNumber, [loveNumberNegative3, loveNumberNegative1])
+        console.log("3.-1")
         loveNumber = LoveNumber.add(loveNumber3, loveNumberNegative1)
         testGetNumberArray(loveNumber, [LoveNumber.add(loveNumber3, loveNumberNegative1)])
         
+        console.log("-1.1")
         loveNumber = LoveNumber.add(loveNumberNegative1, loveNumber1)
         testGetNumberArray(loveNumber, [LoveNumber.add(loveNumberNegative1, loveNumber1)])
+        console.log("-1.0.1")
         loveNumber = LoveNumber.add(LoveNumber.subtract(loveNumber0, loveNumberNegative1), loveNumber1)
         testGetNumberArray(loveNumber, [LoveNumber.add(LoveNumber.subtract(loveNumber0, loveNumberNegative1), loveNumber1)])
 
+        console.log("3.3.1")
         loveNumber = LoveNumber.add( LoveNumber.add(loveNumber3, loveNumber3), loveNumber1)
         testGetNumberArray(loveNumber, [LoveNumber.add(loveNumber3, loveNumber3), loveNumber1])
 
