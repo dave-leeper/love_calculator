@@ -995,7 +995,8 @@
         //          Two numbers:
         //          1) Zero with smallest of the two subscripts. If there's a larger subscript, that number has largest subscript minus smallest subscript. If no addition took place this will be 0[0].
         //          2) Any remainder is returned in a second number.  If no addition took place this will be the original number.
-        // Step 4: Add negative numbers for each number in array, then zeros for each number in array, then positive numbers for each number in array.
+        // Step 2: Break number up into an array of numbers. Each number in an array element has the same superscript.
+        // Step 3: Add all negative numbers, sort by smallest number first, and print result. Print Zero, if one exists. Add all positive numbers, sort by smallest number first, print result.
         loveNumber = LoveNumber.add(loveNumber3, loveNumberNegative1)
         testGetNumberArray(loveNumber, [loveNumberNegative3, loveNumberNegative1])
         
