@@ -884,7 +884,7 @@
         let testGetNumberArray = (loveNumber, expectedArray) => {
             let result = loveNumber.getNumberArray()
             let testText = "loveNumber.getNumberArray()"
-            if (expectedArray.length !== result.length) {console.log(testText + " failed. Expected array length of " + expectedArray.length + ", got " + result.length + ".\nLoveNumber: " + loveNumber.toDebugString(true) + ".\nResult[0]: " + (result.length <= 1)? result[0].toDebugString(true) : "null" + "\nResult[1]: " + (result.length <= 2)? result[1].toDebugString(true) : "null")}
+            if (expectedArray.length !== result.length) {console.log(testText + " failed. Expected array length of " + expectedArray.length + ", got " + result.length + ". LoveNumber: " + loveNumber.toDebugString(true) + ". Result[0]: " + (result.length <= 1)? result[0].toDebugString(true) : "null" + " Result[1]: " + (result.length <= 2)? result[1].toDebugString(true) : "null")}
             for (let loop = 0; loop < expectedArray.length; loop++) {
                 if (LoveNumber.isEqual(expectedArray[loop], result[loop])) { continue; }
                 console.log(testText + " failed at loop " + loop + ". Expected " + expectedArray[loop].toDebugString(true) + ", got " + result[loop].toDebugString(true) + ".")
