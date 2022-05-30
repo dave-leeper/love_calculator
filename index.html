@@ -884,7 +884,7 @@
         let testGetNumberArray = (loveNumber, expectedArray) => {
             let result = loveNumber.getNumberArray()
             let testText = "loveNumber.getNumberArray()"
-            if (expectedArray.length !== result.length) {console.log(testText + " failed. Expected array length of " + expectedArray.length + ", got " + result.length + ". LoveNumber: " + loveNumber.toDebugString(true) + ". ->> Result[0]: " + (result.length <= 1)? result[0].toDebugString(true) : "null" + " ->> Result[1]: " + (result.length <= 2)? result[1].toDebugString(true) : "null")}
+            if (expectedArray.length !== result.length) {console.log(testText + " failed. Expected array length of " + expectedArray.length + ", got " + result.length)}
             for (let loop = 0; loop < expectedArray.length; loop++) {
                 if (LoveNumber.isEqual(expectedArray[loop], result[loop])) { continue; }
                 console.log(testText + " failed at loop " + loop + ". Expected " + expectedArray[loop].toDebugString(true) + ", got " + result[loop].toDebugString(true) + ".")
@@ -892,6 +892,7 @@
             return result
         }
         let loveNumber0 = LoveNumber.convertIntToLoveNumber(0)
+        let loveNumber0_2 = LoveNumber.add(loveNumber0, loveNumber0)
         let loveNumber1 = LoveNumber.convertIntToLoveNumber(1)
         let loveNumber2 = LoveNumber.convertIntToLoveNumber(2)
         let loveNumber3 = LoveNumber.convertIntToLoveNumber(3)
@@ -930,7 +931,7 @@
         testGetNumberArray(loveNumber, [loveNumber3, loveNumber1])
         console.log("-3.-1")
         loveNumber = LoveNumber.add(loveNumberNegative3, loveNumberNegative1)
-        testGetNumberArray(loveNumber, [loveNumberNegative3, loveNumberNegative1])
+        testGetNumberArray(loveNumber, [loveNumber0_2, loveNumber2])
         console.log("3.-1")
         // MergeToZero failing. Result should be 0[2].2[1]
         // -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -0[0] -1[1] -0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 0[0] 1[1] 1[1] 0[0]
