@@ -450,7 +450,7 @@
         let testConvertIntToLoveNumber = (loveNumber, expected, includeSubscripts) => {
             let result = loveNumber.toDebugString(includeSubscripts)
             let testText = "loveNumber.toDebugString(" + includeSubscripts + ")"
-            if (expected !== result) {console.log(testText + " failed. Expected " + expected + ", got " + result + ".")}
+            if (expected !== result) {console.log(testText + " failed. EXPECTED " + expected + ", GOT " + result + ".")}
         }
 
         testConvertIntToLoveNumber(loveNumber0, expected0False, false)
