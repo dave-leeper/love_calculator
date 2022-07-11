@@ -226,7 +226,7 @@
                 result += "+" + this.positiveFlags.join("")
                 return result
             }
-            let result = "-" + this.negativeFlags.join("") + "+" + this.positiveFlags.join("")
+            let result = "(-" + this.negativeFlags.join("") + "+" + this.positiveFlags.join("") + ")"
             for (let loop = 0; loop < this.negativeFlags.length; loop++) {
                 result = result + "-" + this.negativeFlags[loop]
                 result = result + "[" + this.negativeCounts[loop] + "]"
