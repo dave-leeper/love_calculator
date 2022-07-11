@@ -890,7 +890,7 @@
             if (expectedArray.length !== result.length) {console.log(testText + " failed. Expected array length of " + expectedArray.length + ", got " + result.length)}
             for (let loop = 0; loop < expectedArray.length; loop++) {
                 if (LoveNumber.isEqual(expectedArray[loop], result[loop])) { continue; }
-                console.log(testText + " failed at loop " + loop + ". Expected " + expectedArray[loop].toDebugString(true) + ", got " + result[loop].toDebugString(true) + ".")
+                console.log(testText + " failed at loop " + loop + ". Expected " + expectedArray[loop].toDebugString(true, true) + ", got " + result[loop].toDebugString(true, true) + ".")
             }
             return result
         }
